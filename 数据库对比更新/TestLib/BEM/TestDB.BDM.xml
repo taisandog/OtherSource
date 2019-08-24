@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<root>
+  <dataaccess name="TestDB">
+    <item type="TestLib.DataAccess.Buffalo.Data.MySQL.TUserDataAccess" interface="TestLib.DataAccess.IDataAccess.ITUserDataAccess" />
+  </dataaccess>
+  <business>
+    <item type="TestLib.Business.TUserBusiness" class="TestLib.TUser" />
+  </business>
+</root>

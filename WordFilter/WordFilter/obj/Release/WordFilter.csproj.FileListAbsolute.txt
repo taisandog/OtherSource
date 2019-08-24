@@ -1,0 +1,12 @@
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.csprojAssemblyReference.cache
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.FrmKeys.resources
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.FrmMain.resources
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.FrmQRResault.resources
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.Properties.Resources.resources
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.csproj.GenerateResource.cache
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.csproj.CoreCompileInputs.cache
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilterRes\WordFilter.exe
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilterRes\WordFilter.pdb
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.csproj.CopyComplete
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.exe
+D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.pdb

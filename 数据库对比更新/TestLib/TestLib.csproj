@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4262BE99-A44B-477A-B5B9-A0A58C992AEB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestLib</RootNamespace>
+    <AssemblyName>TestLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Buffalo.Data.MySQL">
+      <HintPath>..\..\..\..\dll\Buffalo\Net4.5\Buffalo.Data.MySQL.dll</HintPath>
+    </Reference>
+    <Reference Include="Buffalo.DB">
+      <HintPath>..\..\..\..\dll\Buffalo\Net4.5\Buffalo.DB.dll</HintPath>
+    </Reference>
+    <Reference Include="Buffalo.Kernel">
+      <HintPath>..\..\..\..\dll\Buffalo\Net4.5\Buffalo.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\dll\Buffalo\Net4.5\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BQLEntity\TBase.cs" />
+    <Compile Include="BQLEntity\TestDB.cs" />
+    <Compile Include="BQLEntity\TUser.cs" />
+    <Compile Include="Business\TBaseBusiness.cs" />
+    <Compile Include="Business\TUserBusiness.cs" />
+    <Compile Include="DataAccess\Bql\TUserDataAccess.cs" />
+    <Compile Include="DataAccess\Buffalo.Data.MySQL\TUserDataAccess.cs" />
+    <Compile Include="DataAccess\IDataAccess\ITUserDataAccess.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TBase.cs" />
+    <Compile Include="TBase.extend.cs">
+      <DependentUpon>TBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TUser.cs" />
+    <Compile Include="TUser.extend.cs">
+      <DependentUpon>TUser.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TestDB.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BEM\TBase.ETM.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BEM\TestDB.BDM.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BEM\TUser.ETM.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

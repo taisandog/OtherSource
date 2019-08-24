@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8AC9B0EC-D35D-4FDE-B65E-0F9E4085190E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WordFilter</RootNamespace>
+    <AssemblyName>WordFilter</AssemblyName>
+    <ApplicationIcon>notebook.ico</ApplicationIcon>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\WordFilterRes\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Buffalo.ArgCommon">
+      <HintPath>..\..\..\..\BuffaloSetup\AddIns\Net4.5\Buffalo.ArgCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="Buffalo.Kernel">
+      <HintPath>..\..\..\..\BuffaloSetup\AddIns\Net4.5\Buffalo.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="zxing, Version=0.12.0.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\ZXing.Net\net2.0\zxing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConfigSave.cs" />
+    <Compile Include="FrmKeys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKeys.Designer.cs">
+      <DependentUpon>FrmKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmQRResault.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmQRResault.Designer.cs">
+      <DependentUpon>FrmQRResault.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmKeys.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmQRResault.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmQRResault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="QRCodeUnit.cs" />
+    <Compile Include="ScreenCapture.cs" />
+    <Compile Include="Win32\AsmManager.cs" />
+    <Compile Include="Win32\ClipboardListener.cs" />
+    <Compile Include="Win32\ComboBoxItem.cs" />
+    <Compile Include="Win32\Enums.cs" />
+    <Compile Include="Win32\ExWindow.cs" />
+    <Compile Include="Win32\FormInfo.cs" />
+    <Compile Include="Win32\HardwareInfo.cs" />
+    <Compile Include="Win32\HotKey.cs" />
+    <Compile Include="Win32\KeyBoardListener.cs" />
+    <Compile Include="Win32\MessageBoxEx.cs" />
+    <Compile Include="Win32\ParallelPort.cs" />
+    <Compile Include="Win32\ProcessUrlRegistry.cs" />
+    <Compile Include="Win32\PtrGeter.cs" />
+    <Compile Include="Win32\RegExportImport.cs" />
+    <Compile Include="Win32\RegistryUtil.cs" />
+    <Compile Include="Win32\Structs.cs" />
+    <Compile Include="Win32\SystemInfo.cs" />
+    <Compile Include="Win32\WindowsAPI.cs" />
+    <Compile Include="Win32\WindowsHook.cs" />
+    <Compile Include="Win32\WinError.cs" />
+    <Compile Include="WinAPI.cs" />
+    <Compile Include="WordPicture.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="notebook.ico" />
+    <Content Include="zxing.dll" />
+    <Content Include="zxing.XML" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

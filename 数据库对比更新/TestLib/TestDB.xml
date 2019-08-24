@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<config connectionString="User ID=root;Password=111111;Host=192.168.1.35;Port=3306;Database=testdb;" dbType="Buffalo.Data.MySQL" appnamespace="TestLib.DataAccess.Buffalo.Data.MySQL" assembly="" name="TestDB" cache="" cacheConnString="" allCache="0" lazy="1" />

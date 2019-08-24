@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buffalo.D2DTools", "Buffalo.D2DTools\Buffalo.D2DTools.csproj", "{4D115553-62C4-4A2C-B0DE-A6FBCA41E0C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleForm", "SampleForm\SampleForm.csproj", "{ABA3A980-BCDB-40DA-9ACF-A5098B36C3C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D115553-62C4-4A2C-B0DE-A6FBCA41E0C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D115553-62C4-4A2C-B0DE-A6FBCA41E0C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D115553-62C4-4A2C-B0DE-A6FBCA41E0C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D115553-62C4-4A2C-B0DE-A6FBCA41E0C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA3A980-BCDB-40DA-9ACF-A5098B36C3C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA3A980-BCDB-40DA-9ACF-A5098B36C3C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA3A980-BCDB-40DA-9ACF-A5098B36C3C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA3A980-BCDB-40DA-9ACF-A5098B36C3C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

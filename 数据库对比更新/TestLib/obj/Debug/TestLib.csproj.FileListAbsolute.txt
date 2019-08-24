@@ -1,0 +1,14 @@
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\bin\Debug\TestLib.dll
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\bin\Debug\TestLib.pdb
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\bin\Debug\Buffalo.Data.MySQL.dll
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\bin\Debug\Buffalo.DB.dll
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\bin\Debug\Buffalo.Kernel.dll
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\bin\Debug\MySql.Data.dll
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\bin\Debug\Buffalo.Data.MySQL.xml
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\bin\Debug\Buffalo.DB.xml
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\bin\Debug\Buffalo.Kernel.xml
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\bin\Debug\ICSharpCode.SharpZipLib.xml
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\obj\Debug\TestLib.csprojResolveAssemblyReference.cache
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\obj\Debug\TestLib.dll
+E:\workspace\BuffaloCode\SourceCode\源码示例\数据库对比更新\TestLib\obj\Debug\TestLib.pdb

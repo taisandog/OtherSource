@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace TestLib
+{
+    public class TUser:TBase
+    {
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        private string _userName;
+        /// <summary>
+        /// EMail
+        /// </summary>
+        private string _email;
+    }
+}

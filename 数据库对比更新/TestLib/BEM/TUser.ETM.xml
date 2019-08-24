@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<class TableName="user" ClassName="TestLib.TUser" IsTable="1" BelongDB="TestDB" UseCache="0" Description="" Lazy="1">
+  <property FieldName="_userName" PropertyName="UserName" DbType="AnsiString" Length="128" EntityPropertyType="1" ParamName="userName" ReadOnly="0" Description="用户名" AllowNull="1" />
+  <property FieldName="_email" PropertyName="Email" DbType="AnsiString" Length="128" EntityPropertyType="1" ParamName="email" ReadOnly="0" Description="EMail" AllowNull="1" />
+</class>

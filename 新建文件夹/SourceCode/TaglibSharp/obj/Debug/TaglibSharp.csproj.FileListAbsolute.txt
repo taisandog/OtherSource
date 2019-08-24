@@ -1,0 +1,5 @@
+D:\workspace\BuffaloCode\SourceCode\源码示例\DumpQQMusic\TaglibSharp\bin\Debug\TaglibSharp.dll
+D:\workspace\BuffaloCode\SourceCode\源码示例\DumpQQMusic\TaglibSharp\bin\Debug\TaglibSharp.pdb
+D:\workspace\BuffaloCode\SourceCode\源码示例\DumpQQMusic\TaglibSharp\obj\Debug\TaglibSharp.dll
+D:\workspace\BuffaloCode\SourceCode\源码示例\DumpQQMusic\TaglibSharp\obj\Debug\TaglibSharp.pdb
+D:\workspace\BuffaloCode\SourceCode\源码示例\DumpQQMusic\TaglibSharp\obj\Debug\TaglibSharp.csprojResolveAssemblyReference.cache

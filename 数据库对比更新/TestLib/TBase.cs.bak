@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace TestLib
+{
+    public class TBase
+    {
+        /// <summary>
+        /// ID
+        /// </summary>
+        private int _id;
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        private DateTime _createDate;
+    }
+}

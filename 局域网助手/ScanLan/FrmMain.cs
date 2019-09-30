@@ -160,9 +160,19 @@ namespace ScanLan
             {
                 if (machine.Ping(_speed.Timeout).Status == IPStatus.Success)
                 {
-                    machine.HostName = LanMachine.GetHostName(machine.IP);
-
-                    machine.Mac = MacInfo.GetRemoteMac(machine.IP.ToString());
+                    try
+                    {
+                        machine.HostName = LanMachine.GetHostName(machine.IP);
+                    }
+                    catch
+                    {
+                        machine.HostName = machine.IP.ToString();
+                    }
+                    try
+                    {
+                        machine.Mac = MacInfo.GetRemoteMac(machine.IP.ToString());
+                    }
+                    catch { }
                     AddToGrid(machine);
                 }
             }
@@ -561,7 +571,21 @@ namespace ScanLan
                 {
                     return;
                 }
-                machine.CreateWakeOnSnapshot();
+                machine.CreateWakeOnSnapshot(false);
+            }
+        }
+
+        private void TsCreateSnapPing_Click(object sender, EventArgs e)
+        {
+            if (dgMembers.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgMembers.SelectedRows[0];
+                LanMachine machine = row.Tag as LanMachine;
+                if (machine == null)
+                {
+                    return;
+                }
+                machine.CreateWakeOnSnapshot(true);
             }
         }
     }

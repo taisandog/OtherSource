@@ -49,6 +49,7 @@
             this.ping主机ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查看共享ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.唤醒ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsCreateSnap = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsDelete = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +71,7 @@
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
-            this.tsCreateSnap = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsCreateSnapPing = new System.Windows.Forms.ToolStripMenuItem();
             this.gpScan.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMembers)).BeginInit();
@@ -242,63 +243,71 @@
             this.查看共享ToolStripMenuItem,
             this.唤醒ToolStripMenuItem,
             this.tsCreateSnap,
+            this.tsCreateSnapPing,
             this.toolStripMenuItem3,
             this.复制ToolStripMenuItem,
             this.tsDelete,
             this.toolStripMenuItem2,
             this.tsClear});
             this.cmItems.Name = "cmItems";
-            this.cmItems.Size = new System.Drawing.Size(173, 192);
+            this.cmItems.Size = new System.Drawing.Size(211, 214);
             // 
             // ping主机ToolStripMenuItem
             // 
             this.ping主机ToolStripMenuItem.Name = "ping主机ToolStripMenuItem";
-            this.ping主机ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.ping主机ToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.ping主机ToolStripMenuItem.Text = "ping主机";
             this.ping主机ToolStripMenuItem.Click += new System.EventHandler(this.ping主机ToolStripMenuItem_Click);
             // 
             // 查看共享ToolStripMenuItem
             // 
             this.查看共享ToolStripMenuItem.Name = "查看共享ToolStripMenuItem";
-            this.查看共享ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.查看共享ToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.查看共享ToolStripMenuItem.Text = "查看共享";
             this.查看共享ToolStripMenuItem.Click += new System.EventHandler(this.查看共享ToolStripMenuItem_Click);
             // 
             // 唤醒ToolStripMenuItem
             // 
             this.唤醒ToolStripMenuItem.Name = "唤醒ToolStripMenuItem";
-            this.唤醒ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.唤醒ToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.唤醒ToolStripMenuItem.Text = "唤醒";
             this.唤醒ToolStripMenuItem.Click += new System.EventHandler(this.唤醒ToolStripMenuItem_Click);
+            // 
+            // tsCreateSnap
+            // 
+            this.tsCreateSnap.Name = "tsCreateSnap";
+            this.tsCreateSnap.Size = new System.Drawing.Size(210, 22);
+            this.tsCreateSnap.Text = "创建唤醒快捷方式";
+            this.tsCreateSnap.Click += new System.EventHandler(this.tsCreateSnap_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(169, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(207, 6);
             // 
             // 复制ToolStripMenuItem
             // 
             this.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem";
-            this.复制ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.复制ToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.复制ToolStripMenuItem.Text = "复制";
             this.复制ToolStripMenuItem.Click += new System.EventHandler(this.复制ToolStripMenuItem_Click);
             // 
             // tsDelete
             // 
             this.tsDelete.Name = "tsDelete";
-            this.tsDelete.Size = new System.Drawing.Size(172, 22);
+            this.tsDelete.Size = new System.Drawing.Size(210, 22);
             this.tsDelete.Text = "删除";
             this.tsDelete.Click += new System.EventHandler(this.tsDelete_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(169, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(207, 6);
             // 
             // tsClear
             // 
             this.tsClear.Name = "tsClear";
-            this.tsClear.Size = new System.Drawing.Size(172, 22);
+            this.tsClear.Size = new System.Drawing.Size(210, 22);
             this.tsClear.Text = "清空";
             this.tsClear.Click += new System.EventHandler(this.tsClear_Click);
             // 
@@ -427,12 +436,12 @@
             // 
             this.sfd.Filter = "XML文件|*.xml|txt文本|*.txt";
             // 
-            // tsCreateSnap
+            // tsCreateSnapPing
             // 
-            this.tsCreateSnap.Name = "tsCreateSnap";
-            this.tsCreateSnap.Size = new System.Drawing.Size(172, 22);
-            this.tsCreateSnap.Text = "创建唤醒快捷方式";
-            this.tsCreateSnap.Click += new System.EventHandler(this.tsCreateSnap_Click);
+            this.tsCreateSnapPing.Name = "tsCreateSnapPing";
+            this.tsCreateSnapPing.Size = new System.Drawing.Size(210, 22);
+            this.tsCreateSnapPing.Text = "创建带ping唤醒快捷方式";
+            this.tsCreateSnapPing.Click += new System.EventHandler(this.TsCreateSnapPing_Click);
             // 
             // FrmMain
             // 
@@ -507,6 +516,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem tsClear;
         private System.Windows.Forms.ToolStripMenuItem tsCreateSnap;
+        private System.Windows.Forms.ToolStripMenuItem tsCreateSnapPing;
     }
 }
 

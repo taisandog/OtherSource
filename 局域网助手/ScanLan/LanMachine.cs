@@ -55,7 +55,7 @@ namespace ScanLan
         /// <summary>
         /// 创建唤醒的快捷方式
         /// </summary>
-        public void CreateWakeOnSnapshot()
+        public void CreateWakeOnSnapshot(bool hasPing)
         {
             string fileName = "\\wakeon" + _ip.ToString() + ".bat";
             
@@ -67,7 +67,8 @@ namespace ScanLan
             sbContent.Append(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
             sbContent.Append("\" -wakeon");
             sbContent.Append(" ");
-            sbContent.Append(_mac.Mac);
+            sbContent.Append(_mac.Mac+"\r\n");
+            sbContent.Append("ping "+_ip.ToString()+" -t");
             using (StreamWriter file = new StreamWriter(path, false,Encoding.Default))
             {
                 file.Write(sbContent.ToString());

@@ -209,60 +209,66 @@ namespace ScanLan
         public void WakeOnLan()
         {
             byte[] mac = _mac.ToBytes();
-            DoWakeOnLan(mac);
+            WakeOnLan(mac);
+            WakeOnLan2(mac);
         }
         /// <summary>
         /// 实现网络唤醒
         /// </summary>
         /// <param name="mac"></param>
-        public static void DoWakeOnLan(byte[] mac)
+        public static void WakeOnLan(byte[] mac)
         {
             
             using (UdpClient client = new UdpClient())
             {
                 client.Connect(IPAddress.Broadcast, 9090);
-                byte[] packet = new byte[17 * 6];
-                for (int i = 0; i < 6; i++)
-                    packet[i] = 0xFF;
-                for (int i = 1; i <= 16; i++)
-                    for (int j = 0; j < 6; j++)
-                        packet[i * 6 + j] = mac[j];
+                byte[] packet = CreateMagicPackage(mac);
                 int result = client.Send(packet, packet.Length);
             }
         }
+        /// <summary>
+        /// 创建幻包
+        /// </summary>
+        /// <param name="mac"></param>
+        /// <returns></returns>
+        private static byte[] CreateMagicPackage(byte[] mac) 
+        {
+            int byteCount = 0;
+            byte[] bytes = new byte[102];
+            for (int trailer = 0; trailer < 6; trailer++)
+            {
+                bytes[byteCount++] = 0xFF;
+            }
+            for (int macPackets = 0; macPackets < 16; macPackets++)
+            {
+                int i = 0;
+                for (int macBytes = 0; macBytes < 6; macBytes++)
+                {
 
-        ///// <summary>
-        ///// 唤醒
-        ///// </summary>
-        //public void WakeOnLan2()
-        //{
-        //    byte[] mac = _mac.ToBytes();
+                    bytes[byteCount++] = mac[macBytes];
 
-        //    UdpClient client = new UdpClient();
-        //    client.Connect(new IPAddress(0xffffffff),0x2fff);
+                }
+            }
+            return bytes;
+        }
+        /// <summary>
+        /// 唤醒2
+        /// </summary>
+        public void WakeOnLan2(byte[] mac)
+        {
 
-        //    if (IsClientInBrodcastMode(client))
-        //    {
-        //        int byteCount = 0;
-        //        byte[] bytes = new byte[102];
-        //        for (int trailer = 0; trailer < 6; trailer++)
-        //        {
-        //            bytes[byteCount++] = 0xFF;
-        //        }
-        //        for (int macPackets = 0; macPackets < 16; macPackets++)
-        //        {
-        //            int i = 0;
-        //            for (int macBytes = 0; macBytes < 6; macBytes++)
-        //            {
+            using (UdpClient client = new UdpClient())
+            {
+                client.Connect(new IPAddress(0xffffffff), 0x2fff);
 
-        //                bytes[byteCount++] = mac[macBytes];
+                if (IsClientInBrodcastMode(client))
+                {
+                    byte[] bytes = CreateMagicPackage(mac);
 
-        //            }
-        //        }
-
-        //        int returnValue = client.Send(bytes, byteCount);
-        //    }
-        //}
+                    int returnValue = client.Send(bytes, bytes.Length);
+                }
+            }
+        }
         /// <summary>
         /// Sets up the UDP client to broadcast packets.
         /// </summary>

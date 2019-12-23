@@ -259,38 +259,16 @@ namespace ScanLan
 
             using (UdpClient client = new UdpClient())
             {
-                client.Connect(new IPAddress(0xffffffff), 0x2fff);
+                client.Connect(IPAddress.Broadcast, 0x2fff);
 
-                if (IsClientInBrodcastMode(client))
-                {
-                    byte[] bytes = CreateMagicPackage(mac);
 
-                    int returnValue = client.Send(bytes, bytes.Length);
-                }
+                byte[] bytes = CreateMagicPackage(mac);
+
+                int returnValue = client.Send(bytes, bytes.Length);
+
             }
         }
-        /// <summary>
-        /// Sets up the UDP client to broadcast packets.
-        /// </summary>
-        /// <returns><see langword="true"/> if the UDP client is set in
-        /// broadcast mode.</returns>
-        public bool IsClientInBrodcastMode(UdpClient client)
-        {
-            bool broadcast = false;
-
-            try
-            {
-                client.Client.SetSocketOption(SocketOptionLevel.Socket,
-                     SocketOptionName.Broadcast, 0);
-                broadcast = true;
-            }
-            catch
-            {
-                broadcast = false;
-            }
-
-            return broadcast;
-        }
+       
 
         /// <summary>
         /// ping当前IP

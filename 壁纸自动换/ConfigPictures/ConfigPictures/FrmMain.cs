@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using TaskScheduler;
+using System.Globalization;
 
 namespace ConfigPictures
 {
@@ -172,8 +174,35 @@ namespace ConfigPictures
             RefreashList();
             LoadDeskTopSize();
 
+            LoadTaskInfo();
+        }
+
+        /// <summary>
+        /// 获取任务
+        /// </summary>
+        private void LoadTaskInfo()
+        {
             nupMintue.Minimum = 1;
-            nupMintue.Maximum = int.MaxValue;
+            nupMintue.Maximum = 43200;
+
+            try
+            {
+                IRegisteredTask task = TaskSchedulerUnit.FindTask(TaskName);
+                if (task == null)
+                {
+                    return;
+                }
+                foreach (ITrigger tir in task.Definition.Triggers)
+                {
+                    string time = tir.Repetition.Interval;
+                    TimeSpan ts = TaskSchedulerUnit.GetTimeSpan(time);
+                    nupMintue.Value = (int)ts.TotalMinutes;
+                    break;
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnCreate_Click(object sender, EventArgs e)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.cbConvert = new System.Windows.Forms.CheckBox();
             this.txtHeight = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,16 +39,22 @@
             this.lstFiles = new System.Windows.Forms.ListBox();
             this.ofdImg = new System.Windows.Forms.OpenFileDialog();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.chkAutoRun = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nupMintue = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPic)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupMintue)).BeginInit();
             this.SuspendLayout();
             // 
             // cbConvert
@@ -98,7 +105,7 @@
             this.pbPic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbPic.Location = new System.Drawing.Point(0, 30);
             this.pbPic.Name = "pbPic";
-            this.pbPic.Size = new System.Drawing.Size(362, 271);
+            this.pbPic.Size = new System.Drawing.Size(362, 274);
             this.pbPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPic.TabIndex = 21;
             this.pbPic.TabStop = false;
@@ -117,7 +124,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(362, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(186, 271);
+            this.panel1.Size = new System.Drawing.Size(186, 274);
             this.panel1.TabIndex = 18;
             // 
             // lstFiles
@@ -128,7 +135,7 @@
             this.lstFiles.Location = new System.Drawing.Point(0, 0);
             this.lstFiles.Name = "lstFiles";
             this.lstFiles.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstFiles.Size = new System.Drawing.Size(186, 271);
+            this.lstFiles.Size = new System.Drawing.Size(186, 274);
             this.lstFiles.TabIndex = 8;
             // 
             // ofdImg
@@ -145,15 +152,6 @@
             this.btnAdd.Text = "添加";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // chkAutoRun
-            // 
-            this.chkAutoRun.Location = new System.Drawing.Point(202, 14);
-            this.chkAutoRun.Name = "chkAutoRun";
-            this.chkAutoRun.Size = new System.Drawing.Size(160, 24);
-            this.chkAutoRun.TabIndex = 11;
-            this.chkAutoRun.Text = "系统启动时自动运行";
-            this.chkAutoRun.CheckedChanged += new System.EventHandler(this.chkAutoRun_CheckedChanged);
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.cbConvert);
@@ -169,13 +167,13 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.btnAdd);
-            this.panel2.Controls.Add(this.chkAutoRun);
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 301);
+            this.panel2.Location = new System.Drawing.Point(0, 304);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(548, 50);
+            this.panel2.Size = new System.Drawing.Size(548, 80);
             this.panel2.TabIndex = 19;
             // 
             // btnDelete
@@ -187,15 +185,75 @@
             this.btnDelete.Text = "删除";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnCreate
+            // 
+            this.btnCreate.Location = new System.Drawing.Point(129, 42);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(91, 32);
+            this.btnCreate.TabIndex = 13;
+            this.btnCreate.Text = "创建计划任务";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.nupMintue);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnCreate);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox1.Location = new System.Drawing.Point(282, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(266, 80);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "计划任务";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(35, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 12);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "更换频率:";
+            // 
+            // nupMintue
+            // 
+            this.nupMintue.Location = new System.Drawing.Point(100, 15);
+            this.nupMintue.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nupMintue.Name = "nupMintue";
+            this.nupMintue.Size = new System.Drawing.Size(120, 21);
+            this.nupMintue.TabIndex = 15;
+            this.nupMintue.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(226, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "分钟";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 351);
+            this.ClientSize = new System.Drawing.Size(548, 384);
             this.Controls.Add(this.pbPic);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.Text = "设置图片列表";
             this.Load += new System.EventHandler(this.FrmMain_Load);
@@ -205,6 +263,9 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupMintue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -221,10 +282,14 @@
         private System.Windows.Forms.ListBox lstFiles;
         private System.Windows.Forms.OpenFileDialog ofdImg;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.CheckBox chkAutoRun;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown nupMintue;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnCreate;
     }
 }
 

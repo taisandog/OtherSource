@@ -19,7 +19,7 @@ namespace ConfigPictures
 
         private void chkAutoRun_CheckedChanged(object sender, System.EventArgs e)
         {
-            RegConfig.IsAutoRun = chkAutoRun.Checked;
+            //RegConfig.IsAutoRun = chkAutoRun.Checked;
         }
 
         /// <summary>
@@ -157,19 +157,37 @@ namespace ConfigPictures
             e.Effect = DragDropEffects.All;
 
         }
-
+        private static readonly string AutoRoot = Application.StartupPath + "\\AutoChangeDeskTop.exe";
+        private static readonly string TaskName = "AutoChangeDesktop";
         private void FrmMain_Load(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    chkAutoRun.Checked = RegConfig.IsAutoRun;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
+            RefreashList();
+            LoadDeskTopSize();
+
+            nupMintue.Minimum = 1;
+            nupMintue.Maximum = int.MaxValue;
+        }
+
+        private void BtnCreate_Click(object sender, EventArgs e)
         {
             try
             {
-                chkAutoRun.Checked = RegConfig.IsAutoRun;
+                TaskSchedulerUnit.CreateTaskScheduler("user", TaskName, AutoRoot, (int)nupMintue.Value, DateTime.MinValue, DateTime.MinValue, false, "自动更换桌面");
+                MessageBox.Show("创建完毕", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            RefreashList();
-            LoadDeskTopSize();
         }
+       
     }
 }

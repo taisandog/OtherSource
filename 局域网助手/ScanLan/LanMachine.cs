@@ -68,7 +68,10 @@ namespace ScanLan
             sbContent.Append("\" -wakeon");
             sbContent.Append(" ");
             sbContent.Append(_mac.Mac+"\r\n");
-            sbContent.Append("ping "+_ip.ToString()+" -t");
+            if (hasPing)
+            {
+                sbContent.Append("ping " + _ip.ToString() + " -t");
+            }
             using (StreamWriter file = new StreamWriter(path, false,Encoding.Default))
             {
                 file.Write(sbContent.ToString());

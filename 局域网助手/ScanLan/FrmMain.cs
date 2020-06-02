@@ -21,7 +21,7 @@ namespace ScanLan
         }
 
         private static readonly string LastScanFile = AppDomain.CurrentDomain.BaseDirectory + "\\LastScan.xml";
-
+        private static readonly string LastListenFile = AppDomain.CurrentDomain.BaseDirectory + "\\LastListen.xml";
         NumericText[] _txtS =null;
         LanMachine _localMachine;
         ScanSpeed _speed = new ScanSpeed("","",100,1000);
@@ -81,6 +81,7 @@ namespace ScanLan
             BindIP();
             BindSpeed();
             LostLastScan();
+            EnableStart(true);
         }
 
         private void BindSpeed() 
@@ -101,16 +102,19 @@ namespace ScanLan
                 LoadInfo(LastScanFile);
             }
             catch { }
+
+            try
+            {
+                LoadListenInfo(LastListenFile);
+            }
+            catch { }
         }
 
-        private void AddToGrid(LanMachine machine) 
+        private void AddToGrid(LanMachine machine, DataGridView dgv) 
         {
             this.Invoke(new MethodInvoker(delegate
                 {
-                    
-                    DataGridViewRow row = GetRow(machine);
-                    
-                    
+                    DataGridViewRow row = GetRow(machine,dgv);
                 }));
         }
         /// <summary>
@@ -118,9 +122,9 @@ namespace ScanLan
         /// </summary>
         /// <param name="machine"></param>
         /// <returns></returns>
-        private DataGridViewRow GetRow(LanMachine machine)
+        private DataGridViewRow GetRow(LanMachine machine,DataGridView dgv)
         {
-            foreach(DataGridViewRow currow in dgMembers.Rows)
+            foreach(DataGridViewRow currow in dgv.Rows)
             {
                 LanMachine curmachine = currow.Tag as LanMachine;
                 if (curmachine == null)
@@ -133,19 +137,39 @@ namespace ScanLan
                     {
                         curmachine.IP = machine.IP;
                         curmachine.HostName = machine.HostName;
-                        currow.Cells["ColName"].Value = machine.HostName;
-                        currow.Cells["ColIP"].Value = machine.IP.ToString();
+
+                        SetCellValue("ColName",machine.HostName, currow);
+                        SetCellValue("ColIP", machine.IP.ToString(), currow);
+                        SetCellValue("ColLisName", machine.NickName, currow);
+                        
                     }
                     return currow;
                 }
             }
-            int i = dgMembers.Rows.Add();
-            DataGridViewRow newrow = dgMembers.Rows[i];
-            newrow.Cells["ColIP"].Value = machine.IP.ToString();
-            newrow.Cells["ColMAC"].Value = machine.Mac.ToString();
-            newrow.Cells["ColName"].Value = machine.HostName;
+            int i = dgv.Rows.Add();
+            DataGridViewRow newrow = dgv.Rows[i];
+            SetCellValue("ColIP", machine.IP, newrow);
+            SetCellValue("ColMAC", machine.Mac.ToString(), newrow);
+            SetCellValue("ColLisMAC", machine.Mac.ToString(), newrow);
+            SetCellValue("ColName", machine.HostName, newrow);
+            SetCellValue("ColLisName", machine.NickName, newrow);
+
             newrow.Tag = machine;
             return newrow;
+        }
+
+        /// <summary>
+        /// 设置单元格的值
+        /// </summary>
+        /// <param name="colName"></param>
+        /// <param name="value"></param>
+        /// <param name="dgv"></param>
+        private void SetCellValue(string colName,object value, DataGridViewRow row)
+        {
+            if (row.DataGridView.Columns[colName] != null)
+            {
+                row.Cells[colName].Value = value;
+            }
         }
 
         /// <summary>
@@ -173,7 +197,7 @@ namespace ScanLan
                         machine.Mac = MacInfo.GetRemoteMac(machine.IP.ToString());
                     }
                     catch { }
-                    AddToGrid(machine);
+                    AddToGrid(machine,dgMembers);
                 }
             }
             catch (Exception ex) { }
@@ -310,10 +334,16 @@ namespace ScanLan
                 SaveTo(LastScanFile);
             }
             catch { }
+            try
+            {
+                SaveLisTo(LastListenFile);
+            }
+            catch { }
+            
             _isStop = true;
             StopThreads();
             Thread.Sleep(300);
-
+            StopServices();
         }
 
         private void ping主机ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -456,18 +486,25 @@ namespace ScanLan
         /// <returns></returns>
         private bool SaveTo(string path) 
         {
-            List<LanMachine> lstMachine = new List<LanMachine>();
-            foreach (DataGridViewRow row in dgMembers.Rows) 
-            {
-                LanMachine machine = row.Tag as LanMachine;
-                if (machine == null) 
-                {
-                    continue;
-                }
-                lstMachine.Add(machine);
-
-            }
+            List<LanMachine> lstMachine = GetAllMachine(dgMembers);
+            
             if (lstMachine.Count == 0) 
+            {
+                return false;
+            }
+            LanMachine.SaveTo(path, lstMachine);
+            return true;
+        }
+
+        /// <summary>
+        /// 保存监听信息到文件
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private bool SaveLisTo(string path)
+        {
+            List<LanMachine> lstMachine = GetAllMachine(gvLis);
+            if (lstMachine.Count == 0)
             {
                 return false;
             }
@@ -485,10 +522,22 @@ namespace ScanLan
             dgMembers.Rows.Clear();
             foreach (LanMachine machine in lstMachine) 
             {
-                AddToGrid(machine);
+                AddToGrid(machine,dgMembers);
             }
         }
-
+        /// <summary>
+        /// 加载文件
+        /// </summary>
+        /// <returns></returns>
+        private void LoadListenInfo(string path)
+        {
+            List<LanMachine> lstMachine = LanMachine.LoadList(path);
+            gvLis.Rows.Clear();
+            foreach (LanMachine machine in lstMachine)
+            {
+                AddToGrid(machine,gvLis);
+            }
+        }
         private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -587,6 +636,157 @@ namespace ScanLan
                 }
                 machine.CreateWakeOnSnapshot(true);
             }
+        }
+        private SCWebServices _services;
+        private void BtnLisStart_Click(object sender, EventArgs e)
+        {
+            
+            string ip = "http://*:" + ((int)nupLisPort.Value).ToString()+"/";
+            try
+            {
+                _services = new SCWebServices();
+                _services.ListenUrl = new string[] { ip };
+                _services.Start();
+                EnableStart(false);
+                RefreashWeb();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(),"开启失败" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void BtnLisStop_Click(object sender, EventArgs e)
+        {
+            StopServices();
+        }
+
+        private void StopServices()
+        {
+            if (_services != null)
+            {
+                _services.Stop();
+                _services = null;
+            }
+            EnableStart(true);
+        }
+        /// <summary>
+        /// 启用屏蔽开关按钮
+        /// </summary>
+        /// <param name="enable"></param>
+        private void EnableStart(bool enable)
+        {
+            btnLisStart.Enabled = enable;
+            btnLisStop.Enabled = !enable;
+            nupLisPort.Enabled = enable;
+        }
+
+        private void TsAddToLis_Click(object sender, EventArgs e)
+        {
+            if (dgMembers.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgMembers.SelectedRows[0];
+                LanMachine machine = row.Tag as LanMachine;
+                if (machine == null)
+                {
+                    return;
+                }
+
+                string nickName = FrmInputBox.ShowInputBox("请输入机器昵称");
+                if (string.IsNullOrWhiteSpace(nickName))
+                {
+                    return;
+                }
+                machine.NickName = nickName.Trim();
+                DataGridViewRow newrow = GetRow(machine, gvLis);
+                RefreashWeb();
+                try
+                {
+                    SaveLisTo(LastListenFile);
+                }
+                catch { }
+            }
+           
+        }
+        /// <summary>
+        /// 获取所有机器信息
+        /// </summary>
+        /// <returns></returns>
+        private List<LanMachine> GetAllMachine(DataGridView dgv)
+        {
+            List<LanMachine> lstMachine = new List<LanMachine>();
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                LanMachine machine = row.Tag as LanMachine;
+                if (machine == null)
+                {
+                    continue;
+                }
+                lstMachine.Add(machine);
+
+            }
+            return lstMachine;
+        }
+
+        private void TsEditLis_Click(object sender, EventArgs e)
+        {
+            if (gvLis.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = gvLis.SelectedRows[0];
+                LanMachine machine = row.Tag as LanMachine;
+                if (machine == null)
+                {
+                    return;
+                }
+
+                string nickName = FrmInputBox.ShowInputBox("请输入机器昵称");
+                if (string.IsNullOrWhiteSpace(nickName))
+                {
+                    return;
+                }
+                machine.NickName = nickName.Trim();
+                SetCellValue("ColLisName", machine.NickName, row);
+                RefreashWeb();
+                try
+                {
+                    SaveLisTo(LastListenFile);
+                }
+                catch { }
+            }
+        }
+        /// <summary>
+        /// 刷新监听的Web
+        /// </summary>
+        private void RefreashWeb()
+        {
+            List<LanMachine> lstMachine = GetAllMachine(gvLis);
+            SCWebServices.WriteWakeUp(lstMachine);
+        }
+
+        private void TsLisDelete_Click(object sender, EventArgs e)
+        {
+            if (gvLis.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = gvLis.SelectedRows[0];
+                if (row.Index < 0)
+                {
+                    return;
+                }
+
+                gvLis.Rows.Remove(row);
+                RefreashWeb();
+                try
+                {
+                    SaveLisTo(LastListenFile);
+                }
+                catch { }
+            }
+        }
+
+        private void GvLis_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

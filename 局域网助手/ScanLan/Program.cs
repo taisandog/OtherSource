@@ -18,7 +18,18 @@ namespace ScanLan
             {
                 return;
             }
-            Application.Run(new FrmMain());
+            bool canRun = false;
+            using (System.Threading.Mutex mutex = new System.Threading.Mutex(true, "Buffalo.ScanLan", out canRun))
+            {
+                if ( !canRun)
+                {
+                    System.Windows.Forms.MessageBox.Show("已经启动了一个局域网扫描的实例");
+                    return;
+                }
+
+                Application.Run(new FrmMain());
+
+            }
         }
         /// <summary>
         /// 命令行网络唤醒功能

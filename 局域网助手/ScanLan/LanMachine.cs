@@ -47,7 +47,16 @@ namespace ScanLan
             get { return _hostName; }
             set { _hostName = value; }
         }
+        private string _nickName;
 
+        /// <summary>
+        /// 机器名
+        /// </summary>
+        public string NickName
+        {
+            get { return _nickName; }
+            set { _nickName = value; }
+        }
         public override string ToString()
         {
             return HostName+":"+IP.ToString();
@@ -328,13 +337,6 @@ namespace ScanLan
             return Dns.GetHostEntry(ip).HostName;
         }
 
-        
-
-        
-
-        
-
-
 
         public void WriteTo(XmlNode node)
         {
@@ -355,6 +357,9 @@ namespace ScanLan
             att.InnerText =HostName;
             cnode.Attributes.Append(att);
 
+            att = doc.CreateAttribute("NickName");
+            att.InnerText = NickName;
+            cnode.Attributes.Append(att);
         }
 
         public void Load(XmlNode node)
@@ -377,6 +382,11 @@ namespace ScanLan
             if (att != null)
             {
                 HostName = att.InnerText;
+            }
+            att = node.Attributes["NickName"];
+            if (att != null)
+            {
+                NickName = att.InnerText;
             }
         }
 

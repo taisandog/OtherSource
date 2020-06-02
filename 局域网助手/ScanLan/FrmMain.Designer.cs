@@ -50,12 +50,25 @@
             this.查看共享ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.唤醒ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsCreateSnap = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsCreateSnapPing = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsAddToLis = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsClear = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gvLis = new System.Windows.Forms.DataGridView();
+            this.ColLisName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColLisMAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmLisItems = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsEditLis = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsLisDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLisStop = new System.Windows.Forms.Button();
+            this.btnLisStart = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.nupLisPort = new System.Windows.Forms.NumericUpDown();
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnPing = new System.Windows.Forms.Button();
@@ -71,12 +84,15 @@
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
-            this.tsCreateSnapPing = new System.Windows.Forms.ToolStripMenuItem();
             this.gpScan.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMembers)).BeginInit();
             this.cmItems.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvLis)).BeginInit();
+            this.cmLisItems.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupLisPort)).BeginInit();
             this.satProcess.SuspendLayout();
             this.msMenu.SuspendLayout();
             this.SuspendLayout();
@@ -214,7 +230,7 @@
             this.dgMembers.RowHeadersVisible = false;
             this.dgMembers.RowTemplate.Height = 23;
             this.dgMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgMembers.Size = new System.Drawing.Size(870, 374);
+            this.dgMembers.Size = new System.Drawing.Size(870, 322);
             this.dgMembers.TabIndex = 0;
             this.dgMembers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMembers_CellDoubleClick);
             // 
@@ -244,6 +260,7 @@
             this.唤醒ToolStripMenuItem,
             this.tsCreateSnap,
             this.tsCreateSnapPing,
+            this.tsAddToLis,
             this.toolStripMenuItem3,
             this.复制ToolStripMenuItem,
             this.tsDelete,
@@ -280,6 +297,20 @@
             this.tsCreateSnap.Text = "创建唤醒快捷方式";
             this.tsCreateSnap.Click += new System.EventHandler(this.tsCreateSnap_Click);
             // 
+            // tsCreateSnapPing
+            // 
+            this.tsCreateSnapPing.Name = "tsCreateSnapPing";
+            this.tsCreateSnapPing.Size = new System.Drawing.Size(210, 22);
+            this.tsCreateSnapPing.Text = "创建带ping唤醒快捷方式";
+            this.tsCreateSnapPing.Click += new System.EventHandler(this.TsCreateSnapPing_Click);
+            // 
+            // tsAddToLis
+            // 
+            this.tsAddToLis.Name = "tsAddToLis";
+            this.tsAddToLis.Size = new System.Drawing.Size(210, 22);
+            this.tsAddToLis.Text = "添加到Web";
+            this.tsAddToLis.Click += new System.EventHandler(this.TsAddToLis_Click);
+            // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
@@ -313,26 +344,151 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.txtUrl);
             this.panel1.Controls.Add(this.btnOpen);
             this.panel1.Controls.Add(this.btnPing);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 391);
+            this.panel1.Location = new System.Drawing.Point(3, 339);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(870, 27);
+            this.panel1.Size = new System.Drawing.Size(870, 79);
             this.panel1.TabIndex = 2;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.gvLis);
+            this.groupBox2.Controls.Add(this.btnLisStop);
+            this.groupBox2.Controls.Add(this.btnLisStart);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.nupLisPort);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox2.Location = new System.Drawing.Point(416, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(454, 79);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "唤醒服务";
+            // 
+            // gvLis
+            // 
+            this.gvLis.AllowUserToAddRows = false;
+            this.gvLis.AllowUserToResizeRows = false;
+            this.gvLis.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvLis.BackgroundColor = System.Drawing.Color.White;
+            this.gvLis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvLis.ColumnHeadersVisible = false;
+            this.gvLis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColLisName,
+            this.ColLisMAC});
+            this.gvLis.ContextMenuStrip = this.cmLisItems;
+            this.gvLis.Dock = System.Windows.Forms.DockStyle.Right;
+            this.gvLis.Location = new System.Drawing.Point(204, 17);
+            this.gvLis.MultiSelect = false;
+            this.gvLis.Name = "gvLis";
+            this.gvLis.ReadOnly = true;
+            this.gvLis.RowHeadersVisible = false;
+            this.gvLis.RowTemplate.Height = 23;
+            this.gvLis.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvLis.Size = new System.Drawing.Size(247, 59);
+            this.gvLis.TabIndex = 4;
+            this.gvLis.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GvLis_CellContentClick);
+            // 
+            // ColLisName
+            // 
+            this.ColLisName.HeaderText = "名称";
+            this.ColLisName.Name = "ColLisName";
+            this.ColLisName.ReadOnly = true;
+            // 
+            // ColLisMAC
+            // 
+            this.ColLisMAC.HeaderText = "MAC地址";
+            this.ColLisMAC.Name = "ColLisMAC";
+            this.ColLisMAC.ReadOnly = true;
+            // 
+            // cmLisItems
+            // 
+            this.cmLisItems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsEditLis,
+            this.tsLisDelete});
+            this.cmLisItems.Name = "cmLisItems";
+            this.cmLisItems.Size = new System.Drawing.Size(101, 48);
+            // 
+            // tsEditLis
+            // 
+            this.tsEditLis.Name = "tsEditLis";
+            this.tsEditLis.Size = new System.Drawing.Size(100, 22);
+            this.tsEditLis.Text = "编辑";
+            this.tsEditLis.Click += new System.EventHandler(this.TsEditLis_Click);
+            // 
+            // tsLisDelete
+            // 
+            this.tsLisDelete.Name = "tsLisDelete";
+            this.tsLisDelete.Size = new System.Drawing.Size(100, 22);
+            this.tsLisDelete.Text = "删除";
+            this.tsLisDelete.Click += new System.EventHandler(this.TsLisDelete_Click);
+            // 
+            // btnLisStop
+            // 
+            this.btnLisStop.Location = new System.Drawing.Point(123, 46);
+            this.btnLisStop.Name = "btnLisStop";
+            this.btnLisStop.Size = new System.Drawing.Size(75, 23);
+            this.btnLisStop.TabIndex = 3;
+            this.btnLisStop.Text = "停止监听";
+            this.btnLisStop.UseVisualStyleBackColor = true;
+            this.btnLisStop.Click += new System.EventHandler(this.BtnLisStop_Click);
+            // 
+            // btnLisStart
+            // 
+            this.btnLisStart.Location = new System.Drawing.Point(42, 46);
+            this.btnLisStart.Name = "btnLisStart";
+            this.btnLisStart.Size = new System.Drawing.Size(75, 23);
+            this.btnLisStart.TabIndex = 2;
+            this.btnLisStart.Text = "开始监听";
+            this.btnLisStart.UseVisualStyleBackColor = true;
+            this.btnLisStart.Click += new System.EventHandler(this.BtnLisStart_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 12);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "端口";
+            // 
+            // nupLisPort
+            // 
+            this.nupLisPort.Location = new System.Drawing.Point(42, 19);
+            this.nupLisPort.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nupLisPort.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nupLisPort.Name = "nupLisPort";
+            this.nupLisPort.Size = new System.Drawing.Size(156, 21);
+            this.nupLisPort.TabIndex = 0;
+            this.nupLisPort.Value = new decimal(new int[] {
+            8089,
+            0,
+            0,
+            0});
             // 
             // txtUrl
             // 
-            this.txtUrl.Location = new System.Drawing.Point(35, 2);
+            this.txtUrl.Location = new System.Drawing.Point(35, 14);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(356, 21);
             this.txtUrl.TabIndex = 7;
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(467, 1);
+            this.btnOpen.Location = new System.Drawing.Point(316, 46);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 6;
@@ -342,7 +498,7 @@
             // 
             // btnPing
             // 
-            this.btnPing.Location = new System.Drawing.Point(392, 1);
+            this.btnPing.Location = new System.Drawing.Point(235, 46);
             this.btnPing.Name = "btnPing";
             this.btnPing.Size = new System.Drawing.Size(75, 23);
             this.btnPing.TabIndex = 5;
@@ -353,7 +509,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 7);
+            this.label3.Location = new System.Drawing.Point(3, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 12);
             this.label3.TabIndex = 8;
@@ -436,13 +592,6 @@
             // 
             this.sfd.Filter = "XML文件|*.xml|txt文本|*.txt";
             // 
-            // tsCreateSnapPing
-            // 
-            this.tsCreateSnapPing.Name = "tsCreateSnapPing";
-            this.tsCreateSnapPing.Size = new System.Drawing.Size(210, 22);
-            this.tsCreateSnapPing.Text = "创建带ping唤醒快捷方式";
-            this.tsCreateSnapPing.Click += new System.EventHandler(this.TsCreateSnapPing_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -464,6 +613,11 @@
             this.cmItems.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvLis)).EndInit();
+            this.cmLisItems.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nupLisPort)).EndInit();
             this.satProcess.ResumeLayout(false);
             this.satProcess.PerformLayout();
             this.msMenu.ResumeLayout(false);
@@ -517,6 +671,18 @@
         private System.Windows.Forms.ToolStripMenuItem tsClear;
         private System.Windows.Forms.ToolStripMenuItem tsCreateSnap;
         private System.Windows.Forms.ToolStripMenuItem tsCreateSnapPing;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnLisStop;
+        private System.Windows.Forms.Button btnLisStart;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown nupLisPort;
+        private System.Windows.Forms.DataGridView gvLis;
+        private System.Windows.Forms.ToolStripMenuItem tsAddToLis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLisName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLisMAC;
+        private System.Windows.Forms.ContextMenuStrip cmLisItems;
+        private System.Windows.Forms.ToolStripMenuItem tsEditLis;
+        private System.Windows.Forms.ToolStripMenuItem tsLisDelete;
     }
 }
 

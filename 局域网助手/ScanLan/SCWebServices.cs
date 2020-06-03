@@ -138,7 +138,9 @@ namespace ScanLan
                 foreach (LanMachine machine in _lstMachines)
                 {
 
-                    sbButtons.AppendLine("<input name=\"btnSub\" value=\"" + HttpUtility.HtmlEncode(machine.NickName) + "\" class=\"btnSty\" type=\"submit\" onclick=\"onSubmit('" + machine.Mac.Mac + "')\" />");
+                    sbButtons.AppendLine("<input name=\"btnSub\" value=\"" + HttpUtility.HtmlEncode(machine.NickName) +
+                        "\" class=\"btnSty\" type=\"submit\" onclick=\"return onSubmit('"+ HttpUtility.HtmlEncode(machine.NickName) + 
+                        "','" + machine.Mac.Mac + "')\" />");
                 }
             }
             content = content.Replace("<%#Buttons#%>", sbButtons.ToString());

@@ -24,8 +24,12 @@
             }
         </style>
     <script type="text/javascript">
-        function onSubmit(mac)
+        function onSubmit(name,mac)
         {
+            var isCon = confirm("是否唤醒:"+name);
+            if (!isCon) {
+                return false;
+            }
             document.getElementById("txtMac").value = mac;
             
             return true;
@@ -33,6 +37,7 @@
     </script>
     </head>
     <body>
+        <div style="text-align:center"> <h1>唤醒我的计算机</h1></div>
         <form action="./wakeup.htm" method="get">
             <%#Buttons#%>
             <input id="txtMac" name="mac" type="hidden" value="" />

@@ -17,20 +17,23 @@ namespace ScanLan
     /// </summary>
     public class SCWebServices
     {
+        private static object LockObj = new object();
+        private static byte[] HTMLContent = null;
+        private static byte[] HTMLRedirectContent = null;
         /// <summary>
         /// 监听器
         /// </summary>
         HttpListener _httpListener;
         /// <summary>
-        /// 监听地址
+        /// 监听端口
         /// </summary>
-        private string[] _lisUrl;
+        private int _port;
         private Thread _thd;
         public event ErrorHandle OnException;
-        public string[] ListenUrl
+        public int Port
         {
-            get { return _lisUrl; }
-            set { _lisUrl = value; }
+            get { return _port; }
+            set { _port = value; }
         }
         /// <summary>
         /// 是否运行中
@@ -48,10 +51,9 @@ namespace ScanLan
             _httpListener = new HttpListener();
             
             _httpListener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
-            foreach (string strUrl in _lisUrl)
-            {
-                _httpListener.Prefixes.Add(strUrl);
-            }
+            
+                _httpListener.Prefixes.Add("http://+:"+_port+"/");
+            
             _httpListener.Start();
             _running = true;
             _thd = new Thread(new ThreadStart(DoListen));
@@ -77,8 +79,7 @@ namespace ScanLan
                 }
             }
         }
-        private static object LockObj = new object();
-        private static byte[] HTMLContent = null;
+        
         /// <summary>
         /// 获取网页内容
         /// </summary>
@@ -91,14 +92,66 @@ namespace ScanLan
             }
             lock (LockObj)
             {
-                string path = CommonMethods.GetBaseRoot() + "resources\\wakeup.html";
-
-                HTMLContent = File.ReadAllBytes(path);
+                
+                HTMLContent = LoadWeb();
 
                 return HTMLContent;
             }
         }
+        /// <summary>
+        /// 获取网页内容
+        /// </summary>
+        /// <returns></returns>
+        private static byte[] GetHTMLRedirectContent()
+        {
+            if (HTMLRedirectContent != null)
+            {
+                return HTMLRedirectContent;
+            }
+            lock (LockObj)
+            {
 
+                HTMLRedirectContent = LoadRedirectWeb();
+
+                return HTMLRedirectContent;
+            }
+        }
+        private static List<LanMachine> _lstMachines;
+
+
+        /// <summary>
+        /// 刷新网页
+        /// </summary>
+        /// <param name="lstMachines"></param>
+        public static void WriteWakeUp(List<LanMachine> lstMachines)
+        {
+            _lstMachines = lstMachines;
+            HTMLContent= LoadWeb();
+        }
+        private static byte[] LoadWeb()
+        {
+            string model = CommonMethods.GetBaseRoot() + "resources\\model.html";
+            string content = File.ReadAllText(model, Encoding.UTF8);
+            StringBuilder sbButtons = new StringBuilder();
+            if (_lstMachines != null)
+            {
+                foreach (LanMachine machine in _lstMachines)
+                {
+
+                    sbButtons.AppendLine("<input name=\"btnSub\" value=\"" + HttpUtility.HtmlEncode(machine.NickName) + "\" class=\"btnSty\" type=\"submit\" onclick=\"onSubmit('" + machine.Mac.Mac + "')\" />");
+                }
+            }
+            content = content.Replace("<%#Buttons#%>", sbButtons.ToString());
+
+            return System.Text.Encoding.UTF8.GetBytes(content);
+        }
+        private static byte[] LoadRedirectWeb()
+        {
+            string model = CommonMethods.GetBaseRoot() + "resources\\modelredirect.html";
+            string content = File.ReadAllText(model, Encoding.UTF8);
+           
+            return System.Text.Encoding.UTF8.GetBytes(content);
+        }
         private void DoRequest(object objhttpListenerContext)
         {
             try
@@ -109,23 +162,23 @@ namespace ScanLan
                     return;
                 }
                 HttpListenerRequest request = context.Request;
+                //取得响应对象
+                HttpListenerResponse response = context.Response;
+                response.ContentType = "text/html; charset=utf-8";
 
+                byte[] content = null;
                 string url = request.Url.AbsolutePath;
-                string mac = request.QueryString["txtMac"];
+                string mac = request.QueryString["mac"];
                 if (!string.IsNullOrWhiteSpace(mac))
                 {
                     WakeOn(mac);
+                    content = GetHTMLRedirectContent();
                 }
-               
-                //取得响应对象
-                HttpListenerResponse response = context.Response;
-
-
+                else
+                {
+                    content = GetHTMLContent();
+                }
                 //设置响应头部内容，长度及编码
-                
-                response.ContentType = "text/html; charset=utf-8";
-                byte[] content = GetHTMLContent();
-
                 response.ContentLength64 = content.Length;
                 response.OutputStream.Write(content, 0, content.Length);
             }
@@ -183,24 +236,6 @@ namespace ScanLan
             Thread.Sleep(200);
         }
 
-        /// <summary>
-        /// 刷新网页
-        /// </summary>
-        /// <param name="lstMachines"></param>
-        public static void WriteWakeUp(List<LanMachine> lstMachines)
-        {
-            string model = CommonMethods.GetBaseRoot() + "resources\\model.html";
-            string content = File.ReadAllText(model, Encoding.UTF8);
-            StringBuilder sbButtons = new StringBuilder();
-            foreach(LanMachine machine in lstMachines)
-            {
-                
-                sbButtons.AppendLine("<input name=\"btnSub\" value=\""+ HttpUtility.HtmlEncode( machine .NickName)+ "\" class=\"btnSty\" type=\"submit\" onclick=\"onSubmit('"+ machine.Mac.Mac+ "')\" />");
-            }
-            content = content.Replace("<%#Buttons#%>", sbButtons.ToString());
-            string path = CommonMethods.GetBaseRoot() + "resources\\wakeup.html";
-            File.WriteAllText(path, content, Encoding.UTF8);
-        }
         
     }
 }

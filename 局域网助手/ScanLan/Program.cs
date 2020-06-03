@@ -6,6 +6,14 @@ namespace ScanLan
 {
     static class Program
     {
+        private static bool _autoRun = false;
+        public static bool AutoRun
+        {
+            get
+            {
+                return _autoRun;
+            }
+        }
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -18,6 +26,7 @@ namespace ScanLan
             {
                 return;
             }
+            _autoRun = ISAutoRun(args);
             bool canRun = false;
             using (System.Threading.Mutex mutex = new System.Threading.Mutex(true, "Buffalo.ScanLan", out canRun))
             {
@@ -30,6 +39,23 @@ namespace ScanLan
                 Application.Run(new FrmMain());
 
             }
+        }
+
+        // <summary>
+        /// 是否自动启动
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        private static bool ISAutoRun(string[] args)
+        {
+            foreach (string arg in args)
+            {
+                if (string.Equals(arg, "auto", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         /// <summary>
         /// 命令行网络唤醒功能

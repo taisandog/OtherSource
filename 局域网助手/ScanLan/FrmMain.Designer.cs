@@ -35,8 +35,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbIP = new System.Windows.Forms.ComboBox();
             this.btnStop = new System.Windows.Forms.Button();
-            this.txtEnd = new LC.Library.Controls.IPBox();
-            this.txtStar = new LC.Library.Controls.IPBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -84,6 +82,9 @@
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
+            this.chkAutoRun = new System.Windows.Forms.CheckBox();
+            this.txtEnd = new LC.Library.Controls.IPBox();
+            this.txtStar = new LC.Library.Controls.IPBox();
             this.gpScan.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMembers)).BeginInit();
@@ -154,22 +155,6 @@
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // txtEnd
-            // 
-            this.txtEnd.Location = new System.Drawing.Point(475, 18);
-            this.txtEnd.Name = "txtEnd";
-            this.txtEnd.Padding = new System.Windows.Forms.Padding(1);
-            this.txtEnd.Size = new System.Drawing.Size(140, 21);
-            this.txtEnd.TabIndex = 6;
-            // 
-            // txtStar
-            // 
-            this.txtStar.Location = new System.Drawing.Point(271, 18);
-            this.txtStar.Name = "txtStar";
-            this.txtStar.Padding = new System.Windows.Forms.Padding(1);
-            this.txtStar.Size = new System.Drawing.Size(140, 21);
-            this.txtStar.TabIndex = 5;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -230,7 +215,7 @@
             this.dgMembers.RowHeadersVisible = false;
             this.dgMembers.RowTemplate.Height = 23;
             this.dgMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgMembers.Size = new System.Drawing.Size(870, 322);
+            this.dgMembers.Size = new System.Drawing.Size(870, 281);
             this.dgMembers.TabIndex = 0;
             this.dgMembers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMembers_CellDoubleClick);
             // 
@@ -350,13 +335,14 @@
             this.panel1.Controls.Add(this.btnPing);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 339);
+            this.panel1.Location = new System.Drawing.Point(3, 298);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(870, 79);
+            this.panel1.Size = new System.Drawing.Size(870, 120);
             this.panel1.TabIndex = 2;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkAutoRun);
             this.groupBox2.Controls.Add(this.gvLis);
             this.groupBox2.Controls.Add(this.btnLisStop);
             this.groupBox2.Controls.Add(this.btnLisStart);
@@ -365,7 +351,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox2.Location = new System.Drawing.Point(416, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(454, 79);
+            this.groupBox2.Size = new System.Drawing.Size(454, 120);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "唤醒服务";
@@ -383,14 +369,14 @@
             this.ColLisMAC});
             this.gvLis.ContextMenuStrip = this.cmLisItems;
             this.gvLis.Dock = System.Windows.Forms.DockStyle.Right;
-            this.gvLis.Location = new System.Drawing.Point(204, 17);
+            this.gvLis.Location = new System.Drawing.Point(171, 17);
             this.gvLis.MultiSelect = false;
             this.gvLis.Name = "gvLis";
             this.gvLis.ReadOnly = true;
             this.gvLis.RowHeadersVisible = false;
             this.gvLis.RowTemplate.Height = 23;
             this.gvLis.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvLis.Size = new System.Drawing.Size(247, 59);
+            this.gvLis.Size = new System.Drawing.Size(280, 100);
             this.gvLis.TabIndex = 4;
             this.gvLis.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GvLis_CellContentClick);
             // 
@@ -430,7 +416,7 @@
             // 
             // btnLisStop
             // 
-            this.btnLisStop.Location = new System.Drawing.Point(123, 46);
+            this.btnLisStop.Location = new System.Drawing.Point(90, 91);
             this.btnLisStop.Name = "btnLisStop";
             this.btnLisStop.Size = new System.Drawing.Size(75, 23);
             this.btnLisStop.TabIndex = 3;
@@ -440,7 +426,7 @@
             // 
             // btnLisStart
             // 
-            this.btnLisStart.Location = new System.Drawing.Point(42, 46);
+            this.btnLisStart.Location = new System.Drawing.Point(9, 91);
             this.btnLisStart.Name = "btnLisStart";
             this.btnLisStart.Size = new System.Drawing.Size(75, 23);
             this.btnLisStart.TabIndex = 2;
@@ -451,7 +437,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 23);
+            this.label5.Location = new System.Drawing.Point(7, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 1;
@@ -459,7 +445,7 @@
             // 
             // nupLisPort
             // 
-            this.nupLisPort.Location = new System.Drawing.Point(42, 19);
+            this.nupLisPort.Location = new System.Drawing.Point(42, 20);
             this.nupLisPort.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -471,7 +457,7 @@
             0,
             0});
             this.nupLisPort.Name = "nupLisPort";
-            this.nupLisPort.Size = new System.Drawing.Size(156, 21);
+            this.nupLisPort.Size = new System.Drawing.Size(123, 21);
             this.nupLisPort.TabIndex = 0;
             this.nupLisPort.Value = new decimal(new int[] {
             8089,
@@ -481,14 +467,14 @@
             // 
             // txtUrl
             // 
-            this.txtUrl.Location = new System.Drawing.Point(35, 14);
+            this.txtUrl.Location = new System.Drawing.Point(37, 21);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(356, 21);
             this.txtUrl.TabIndex = 7;
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(316, 46);
+            this.btnOpen.Location = new System.Drawing.Point(318, 53);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 6;
@@ -498,7 +484,7 @@
             // 
             // btnPing
             // 
-            this.btnPing.Location = new System.Drawing.Point(235, 46);
+            this.btnPing.Location = new System.Drawing.Point(237, 53);
             this.btnPing.Name = "btnPing";
             this.btnPing.Size = new System.Drawing.Size(75, 23);
             this.btnPing.TabIndex = 5;
@@ -509,7 +495,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 19);
+            this.label3.Location = new System.Drawing.Point(5, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 12);
             this.label3.TabIndex = 8;
@@ -591,6 +577,33 @@
             // sfd
             // 
             this.sfd.Filter = "XML文件|*.xml|txt文本|*.txt";
+            // 
+            // chkAutoRun
+            // 
+            this.chkAutoRun.AutoSize = true;
+            this.chkAutoRun.Location = new System.Drawing.Point(9, 59);
+            this.chkAutoRun.Name = "chkAutoRun";
+            this.chkAutoRun.Size = new System.Drawing.Size(48, 16);
+            this.chkAutoRun.TabIndex = 5;
+            this.chkAutoRun.Text = "自启";
+            this.chkAutoRun.UseVisualStyleBackColor = true;
+            this.chkAutoRun.Click += new System.EventHandler(this.ChkAutoRun_Click);
+            // 
+            // txtEnd
+            // 
+            this.txtEnd.Location = new System.Drawing.Point(475, 18);
+            this.txtEnd.Name = "txtEnd";
+            this.txtEnd.Padding = new System.Windows.Forms.Padding(1);
+            this.txtEnd.Size = new System.Drawing.Size(140, 21);
+            this.txtEnd.TabIndex = 6;
+            // 
+            // txtStar
+            // 
+            this.txtStar.Location = new System.Drawing.Point(271, 18);
+            this.txtStar.Name = "txtStar";
+            this.txtStar.Padding = new System.Windows.Forms.Padding(1);
+            this.txtStar.Size = new System.Drawing.Size(140, 21);
+            this.txtStar.TabIndex = 5;
             // 
             // FrmMain
             // 
@@ -683,6 +696,7 @@
         private System.Windows.Forms.ContextMenuStrip cmLisItems;
         private System.Windows.Forms.ToolStripMenuItem tsEditLis;
         private System.Windows.Forms.ToolStripMenuItem tsLisDelete;
+        private System.Windows.Forms.CheckBox chkAutoRun;
     }
 }
 

@@ -22,6 +22,7 @@ namespace ScanLan
 
         private static readonly string LastScanFile = AppDomain.CurrentDomain.BaseDirectory + "\\LastScan.xml";
         private static readonly string LastListenFile = AppDomain.CurrentDomain.BaseDirectory + "\\LastListen.xml";
+        private ConfigSetting _setting;
         NumericText[] _txtS =null;
         LanMachine _localMachine;
         ScanSpeed _speed = new ScanSpeed("","",100,1000);
@@ -75,6 +76,8 @@ namespace ScanLan
         {
             string ver=System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             this.Text = "æ÷”ÚÕ¯…®√Ë(ver:" + ver + ")";
+            _setting = ConfigSetting.LoadConfig();
+            nupLisPort.Value = _setting.Port;
             InitIPBox();
             DoScaning(false);
             //_localMachine = LanMachine.GetLocalInfo();
@@ -82,6 +85,11 @@ namespace ScanLan
             BindSpeed();
             LostLastScan();
             EnableStart(true);
+            chkAutoRun.Checked = RegConfig.IsAutoRun;
+            if (Program.AutoRun)
+            {
+                btnLisStart.PerformClick();
+            }
         }
 
         private void BindSpeed() 
@@ -641,14 +649,16 @@ namespace ScanLan
         private void BtnLisStart_Click(object sender, EventArgs e)
         {
             
-            string ip = "http://*:" + ((int)nupLisPort.Value).ToString()+"/";
+           
             try
             {
                 _services = new SCWebServices();
-                _services.ListenUrl = new string[] { ip };
+                _services.Port = (int)nupLisPort.Value;
                 _services.Start();
                 EnableStart(false);
                 RefreashWeb();
+                _setting.Port= (int)nupLisPort.Value;
+                _setting.SaveConfig();
             }
             catch (Exception ex)
             {
@@ -680,6 +690,7 @@ namespace ScanLan
             btnLisStart.Enabled = enable;
             btnLisStop.Enabled = !enable;
             nupLisPort.Enabled = enable;
+            chkAutoRun.Enabled = enable;
         }
 
         private void TsAddToLis_Click(object sender, EventArgs e)
@@ -787,6 +798,11 @@ namespace ScanLan
         private void GvLis_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void ChkAutoRun_Click(object sender, EventArgs e)
+        {
+            RegConfig.IsAutoRun = chkAutoRun.Checked;
         }
     }
 }

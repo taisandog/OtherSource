@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigSetting.cs" />
     <Compile Include="FrmInputBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +113,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegConfig.cs" />
     <Compile Include="SCWebServices.cs" />
     <EmbeddedResource Include="FrmInputBox.resx">
       <DependentUpon>FrmInputBox.cs</DependentUpon>
@@ -161,6 +163,9 @@
   <ItemGroup>
     <Content Include="app.ico" />
     <Content Include="LastScan.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\modelredirect.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\wakeup.html">

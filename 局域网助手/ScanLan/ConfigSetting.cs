@@ -57,5 +57,15 @@ namespace ScanLan
             get { return _port; }
             set { _port = value; }
         }
+
+        private bool _onListen = false;
+        /// <summary>
+        /// 是否监听中
+        /// </summary>
+        public bool OnListen
+        {
+            get { return _onListen; }
+            set { _onListen = value; }
+        }
     }
 }

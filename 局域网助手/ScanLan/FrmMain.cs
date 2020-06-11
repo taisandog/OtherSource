@@ -9,7 +9,7 @@ using System.Net;
 using ScanLan.Controls;
 using System.Threading;
 using System.Net.NetworkInformation;
-
+using Library.Unit;
 
 namespace ScanLan
 {
@@ -26,6 +26,8 @@ namespace ScanLan
         NumericText[] _txtS =null;
         LanMachine _localMachine;
         ScanSpeed _speed = new ScanSpeed("","",100,1000);
+
+        FormIconUnit _icon;
         /// <summary>
         /// ≥ı ºªØIPøÚ
         /// </summary>
@@ -76,6 +78,8 @@ namespace ScanLan
         {
             string ver=System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             this.Text = "æ÷”ÚÕ¯…®√Ë(ver:" + ver + ")";
+            _icon = new FormIconUnit(this, appIcon);
+            _icon.Bind();
             _setting = ConfigSetting.LoadConfig();
             nupLisPort.Value = _setting.Port;
             InitIPBox();
@@ -86,9 +90,10 @@ namespace ScanLan
             LostLastScan();
             EnableStart(true);
             chkAutoRun.Checked = RegConfig.IsAutoRun;
-            if (Program.AutoRun)
+            if (Program.AutoRun || _setting.OnListen)
             {
-                btnLisStart.PerformClick();
+                OnListen();
+                
             }
         }
 
@@ -347,7 +352,7 @@ namespace ScanLan
                 SaveLisTo(LastListenFile);
             }
             catch { }
-            
+            RegConfig.IsAutoRun = chkAutoRun.Checked;
             _isStop = true;
             StopThreads();
             Thread.Sleep(300);
@@ -652,12 +657,10 @@ namespace ScanLan
            
             try
             {
-                _services = new SCWebServices();
-                _services.Port = (int)nupLisPort.Value;
-                _services.Start();
-                EnableStart(false);
-                RefreashWeb();
+                OnListen();
+                RegConfig.IsAutoRun = chkAutoRun.Checked;
                 _setting.Port= (int)nupLisPort.Value;
+                _setting.OnListen = true;
                 _setting.SaveConfig();
             }
             catch (Exception ex)
@@ -667,9 +670,20 @@ namespace ScanLan
             
         }
 
+        private void OnListen()
+        {
+            _services = new SCWebServices();
+            _services.Port = (int)nupLisPort.Value;
+            _services.Start();
+            EnableStart(false);
+            RefreashWeb();
+        }
+
         private void BtnLisStop_Click(object sender, EventArgs e)
         {
             StopServices();
+            _setting.OnListen = false;
+            _setting.SaveConfig();
         }
 
         private void StopServices()
@@ -802,7 +816,17 @@ namespace ScanLan
 
         private void ChkAutoRun_Click(object sender, EventArgs e)
         {
-            RegConfig.IsAutoRun = chkAutoRun.Checked;
+            
+        }
+
+        private void FrmMain_Shown(object sender, EventArgs e)
+        {
+            if (Program.AutoRun || _setting.OnListen)
+            {
+                this.WindowState = FormWindowState.Minimized;
+
+            }
+            
         }
     }
 }

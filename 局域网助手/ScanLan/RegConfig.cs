@@ -15,32 +15,41 @@ namespace ScanLan
 			//
 		}
 
-		private static string autoRoot=Application.StartupPath+ "\\ScanLan.exe auto";
+		private static string autoRoot=Application.StartupPath+ "\\ScanLan.exe";
 		private const string keyName= "ScanLan";//注册表键名
-		
 
-		/// <summary>
-		/// 设置是否自启动
-		/// </summary>
-		public static bool IsAutoRun
+        //private static RegistryKey _key= Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+        /// <summary>
+        /// 设置是否自启动
+        /// </summary>
+        public static bool IsAutoRun
 		{
 			get
 			{
-                
-				RegistryKey autoKey=Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run",true);
-				return FindValue(autoKey,keyName);
+
+                using (RegistryKey autoKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", false))
+                {
+                    return FindValue(autoKey, keyName);
+                }
 			}
 			set
 			{
-				RegistryKey autoKey=Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run",true);
-				if(value)
-				{
-					autoKey.SetValue(keyName,autoRoot);
-				}
-				else
-				{
-					autoKey.DeleteValue(keyName,false);
-				}
+                using (RegistryKey autoKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
+                {
+                    if (value)
+                    {
+                        if (string.Equals(autoKey.GetValue(keyName) as string, autoRoot))
+                        {
+                            return;
+                        }
+                        autoKey.DeleteValue(keyName, false);
+                        autoKey.SetValue(keyName, autoRoot, RegistryValueKind.String);
+                    }
+                    else
+                    {
+                        autoKey.DeleteValue(keyName, false);
+                    }
+                }
 			}
 		}
 

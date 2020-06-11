@@ -57,6 +57,7 @@
             this.tsClear = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkAutoRun = new System.Windows.Forms.CheckBox();
             this.gvLis = new System.Windows.Forms.DataGridView();
             this.ColLisName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColLisMAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,7 +83,7 @@
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
-            this.chkAutoRun = new System.Windows.Forms.CheckBox();
+            this.appIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.txtEnd = new LC.Library.Controls.IPBox();
             this.txtStar = new LC.Library.Controls.IPBox();
             this.gpScan.SuspendLayout();
@@ -356,6 +357,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "唤醒服务";
             // 
+            // chkAutoRun
+            // 
+            this.chkAutoRun.AutoSize = true;
+            this.chkAutoRun.Location = new System.Drawing.Point(9, 59);
+            this.chkAutoRun.Name = "chkAutoRun";
+            this.chkAutoRun.Size = new System.Drawing.Size(48, 16);
+            this.chkAutoRun.TabIndex = 5;
+            this.chkAutoRun.Text = "自启";
+            this.chkAutoRun.UseVisualStyleBackColor = true;
+            // 
             // gvLis
             // 
             this.gvLis.AllowUserToAddRows = false;
@@ -578,16 +589,11 @@
             // 
             this.sfd.Filter = "XML文件|*.xml|txt文本|*.txt";
             // 
-            // chkAutoRun
+            // appIcon
             // 
-            this.chkAutoRun.AutoSize = true;
-            this.chkAutoRun.Location = new System.Drawing.Point(9, 59);
-            this.chkAutoRun.Name = "chkAutoRun";
-            this.chkAutoRun.Size = new System.Drawing.Size(48, 16);
-            this.chkAutoRun.TabIndex = 5;
-            this.chkAutoRun.Text = "自启";
-            this.chkAutoRun.UseVisualStyleBackColor = true;
-            this.chkAutoRun.Click += new System.EventHandler(this.ChkAutoRun_Click);
+            this.appIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("appIcon.Icon")));
+            this.appIcon.Text = "notifyIcon1";
+            this.appIcon.Visible = true;
             // 
             // txtEnd
             // 
@@ -618,6 +624,7 @@
             this.Text = "局域网助手";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.Shown += new System.EventHandler(this.FrmMain_Shown);
             this.gpScan.ResumeLayout(false);
             this.gpScan.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -697,6 +704,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsEditLis;
         private System.Windows.Forms.ToolStripMenuItem tsLisDelete;
         private System.Windows.Forms.CheckBox chkAutoRun;
+        private System.Windows.Forms.NotifyIcon appIcon;
     }
 }
 

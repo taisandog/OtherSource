@@ -34,6 +34,8 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.nupTwist = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
             this.btnFont = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.btnQRBackColor = new System.Windows.Forms.Button();
@@ -67,16 +69,17 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.cdPicker = new System.Windows.Forms.ColorDialog();
             this.fdPick = new System.Windows.Forms.FontDialog();
-            this.nupTwist = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
+            this.nudLineCount = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupTwist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSide)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupTwist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLineCount)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -86,7 +89,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 269);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(485, 56);
+            this.panel1.Size = new System.Drawing.Size(518, 56);
             this.panel1.TabIndex = 2;
             // 
             // btnClose
@@ -117,11 +120,13 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(485, 269);
+            this.panel2.Size = new System.Drawing.Size(518, 269);
             this.panel2.TabIndex = 3;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.nudLineCount);
+            this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.nupTwist);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.btnFont);
@@ -142,10 +147,27 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(485, 116);
+            this.groupBox2.Size = new System.Drawing.Size(518, 116);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "参数";
+            // 
+            // nupTwist
+            // 
+            this.nupTwist.Location = new System.Drawing.Point(299, 20);
+            this.nupTwist.Name = "nupTwist";
+            this.nupTwist.Size = new System.Drawing.Size(65, 21);
+            this.nupTwist.TabIndex = 16;
+            this.toolTip1.SetToolTip(this.nupTwist, "提示复制了什么文字的保留时间(毫秒),如果为0则不显示");
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(249, 25);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(47, 12);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "扭曲度:";
             // 
             // btnFont
             // 
@@ -175,7 +197,7 @@
             this.btnQRBackColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQRBackColor.FlatAppearance.BorderSize = 0;
             this.btnQRBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQRBackColor.Location = new System.Drawing.Point(328, 79);
+            this.btnQRBackColor.Location = new System.Drawing.Point(240, 78);
             this.btnQRBackColor.Name = "btnQRBackColor";
             this.btnQRBackColor.Size = new System.Drawing.Size(134, 23);
             this.btnQRBackColor.TabIndex = 12;
@@ -185,7 +207,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(275, 84);
+            this.label11.Location = new System.Drawing.Point(187, 83);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(47, 12);
             this.label11.TabIndex = 11;
@@ -199,7 +221,7 @@
             this.btnQRTextColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQRTextColor.Location = new System.Drawing.Point(52, 79);
             this.btnQRTextColor.Name = "btnQRTextColor";
-            this.btnQRTextColor.Size = new System.Drawing.Size(134, 23);
+            this.btnQRTextColor.Size = new System.Drawing.Size(124, 23);
             this.btnQRTextColor.TabIndex = 10;
             this.btnQRTextColor.UseVisualStyleBackColor = false;
             this.btnQRTextColor.Click += new System.EventHandler(this.btnColor_Click);
@@ -260,7 +282,7 @@
             // chkPoint
             // 
             this.chkPoint.AutoSize = true;
-            this.chkPoint.Location = new System.Drawing.Point(384, 22);
+            this.chkPoint.Location = new System.Drawing.Point(391, 80);
             this.chkPoint.Name = "chkPoint";
             this.chkPoint.Size = new System.Drawing.Size(96, 16);
             this.chkPoint.TabIndex = 4;
@@ -269,7 +291,7 @@
             // 
             // txtShow
             // 
-            this.txtShow.Location = new System.Drawing.Point(182, 21);
+            this.txtShow.Location = new System.Drawing.Point(177, 21);
             this.txtShow.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -329,7 +351,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(0, 122);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(485, 46);
+            this.groupBox1.Size = new System.Drawing.Size(518, 46);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "热键(转换图片)";
@@ -377,7 +399,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox3.Location = new System.Drawing.Point(0, 168);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(485, 101);
+            this.groupBox3.Size = new System.Drawing.Size(518, 101);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "热键(读取二维码,复制二维码图片后按此热键读取)";
@@ -470,28 +492,33 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "密码:";
             // 
-            // nupTwist
+            // nudLineCount
             // 
-            this.nupTwist.Location = new System.Drawing.Point(313, 20);
-            this.nupTwist.Name = "nupTwist";
-            this.nupTwist.Size = new System.Drawing.Size(65, 21);
-            this.nupTwist.TabIndex = 16;
-            this.toolTip1.SetToolTip(this.nupTwist, "提示复制了什么文字的保留时间(毫秒),如果为0则不显示");
+            this.nudLineCount.Location = new System.Drawing.Point(428, 21);
+            this.nudLineCount.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.nudLineCount.Name = "nudLineCount";
+            this.nudLineCount.Size = new System.Drawing.Size(59, 21);
+            this.nudLineCount.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.nudLineCount, "转换后每行最多几个字（0则为不改动）");
             // 
-            // label14
+            // label15
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(260, 23);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(47, 12);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "扭曲度:";
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(371, 24);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(59, 12);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "每行字数:";
             // 
             // FrmKeys
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(485, 325);
+            this.ClientSize = new System.Drawing.Size(518, 325);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
@@ -504,13 +531,14 @@
             this.panel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupTwist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSide)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupTwist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLineCount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -557,5 +585,7 @@
         private System.Windows.Forms.FontDialog fdPick;
         private System.Windows.Forms.NumericUpDown nupTwist;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown nudLineCount;
+        private System.Windows.Forms.Label label15;
     }
 }

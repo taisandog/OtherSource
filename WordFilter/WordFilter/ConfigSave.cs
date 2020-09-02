@@ -103,6 +103,20 @@ namespace WordFilter
             set { _formModifiers = value; }
         }
 
+        private int _lineCount=10;
+        /// <summary>
+        /// Ã¿ÐÐ×ÖÊý
+        /// </summary>
+        public int LineCount
+        {
+            get { return _lineCount; }
+            set
+            {
+                _lineCount = value;
+                
+            }
+        }
+
         private int _side;
 
         /// <summary>

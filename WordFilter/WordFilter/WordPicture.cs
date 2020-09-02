@@ -29,15 +29,15 @@ namespace WordFilter
             set { _lineAlpha = value; }
         }
 
-        int _maxCharacter = 18;
-        /// <summary>
-        /// 每行最大文字数
-        /// </summary>
-        public int MaxCharacter
-        {
-            get { return _maxCharacter; }
-            set { _maxCharacter = value; }
-        }
+        //int _maxCharacter = 18;
+        ///// <summary>
+        ///// 每行最大文字数
+        ///// </summary>
+        //public int MaxCharacter
+        //{
+        //    get { return _maxCharacter; }
+        //    set { _maxCharacter = value; }
+        //}
 
         int _twist  = 1;
         /// <summary>
@@ -56,7 +56,7 @@ namespace WordFilter
         public Bitmap DrawWordPicture(string content) 
         {
             ConfigSave config = Program.MainForm.Config;
-            return DrawWordPicture(content, _maxCharacter, config.TextFont, config.TextSetColor, config.BackSetColor, _lineAlpha, config.Twist);
+            return DrawWordPicture(content, config.LineCount, config.TextFont, config.TextSetColor, config.BackSetColor, _lineAlpha, config.Twist);
         }
 
         /// <summary>
@@ -101,8 +101,12 @@ namespace WordFilter
             fHeight = (int)(fWidth);
             string[] lines = content.Split(new string[] { LineMark(content) }, StringSplitOptions.None);
             maxCharacter = maxCharacter * 2;
+            if (maxCharacter <= 0) 
+            {
+                maxCharacter = content.Length;
+            }
             List<string> readLines = new List<string>();
-
+            
             StringBuilder tmp = new StringBuilder(maxCharacter);
 
             foreach (string str in lines)
@@ -114,7 +118,10 @@ namespace WordFilter
                     while (chars < maxCharacter && que.Count > 0)
                     {
                         char chr = que.Dequeue();
-
+                        if (chr == '\n') 
+                        {
+                            break;
+                        }
                         tmp.Append(chr);
                         chars++;
                         if ((int)chr > 256)
@@ -122,6 +129,7 @@ namespace WordFilter
                             chars++;
                         }
                     }
+
                     readLines.Add(tmp.ToString());
                     tmp.Remove(0, tmp.Length);
                     chars = 0;

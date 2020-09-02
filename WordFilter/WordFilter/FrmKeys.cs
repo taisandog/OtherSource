@@ -170,6 +170,7 @@ namespace WordFilter
             txtPwd.Text = config.Password;
             txtSide.Value = config.Side;
             txtShow.Value = config.ShowTime;
+            nudLineCount.Value = config.LineCount;
             chkPoint.Checked = config.HasPointLine;
             //chkListen.Checked = config.ListenClipboard;
             btnTextColor.BackColor = config.TextSetColor;
@@ -202,6 +203,7 @@ namespace WordFilter
             config.QRBackSetColor = btnQRBackColor.BackColor;
             config.QRSetColor = btnQRTextColor.BackColor;
             config.TextFont = GetSelectFont();
+            config.LineCount = (int)nudLineCount.Value;
             Program.MainForm.ReSetConfig();
             config.SaveConfig();
             this.Close();

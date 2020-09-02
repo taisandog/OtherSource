@@ -71,6 +71,7 @@
             this.fdPick = new System.Windows.Forms.FontDialog();
             this.nudLineCount = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -87,7 +88,7 @@
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnOK);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 269);
+            this.panel1.Location = new System.Drawing.Point(0, 299);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(518, 56);
             this.panel1.TabIndex = 2;
@@ -120,7 +121,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(518, 269);
+            this.panel2.Size = new System.Drawing.Size(518, 299);
             this.panel2.TabIndex = 3;
             // 
             // groupBox2
@@ -349,9 +350,9 @@
             this.groupBox1.Controls.Add(this.cmbKeys);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 122);
+            this.groupBox1.Location = new System.Drawing.Point(0, 124);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(518, 46);
+            this.groupBox1.Size = new System.Drawing.Size(518, 52);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "热键(转换图片)";
@@ -386,6 +387,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.cmbFormModifiers);
             this.groupBox3.Controls.Add(this.cmbFormKeys);
             this.groupBox3.Controls.Add(this.label7);
@@ -397,9 +399,9 @@
             this.groupBox3.Controls.Add(this.txtPwd);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox3.Location = new System.Drawing.Point(0, 168);
+            this.groupBox3.Location = new System.Drawing.Point(0, 176);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(518, 101);
+            this.groupBox3.Size = new System.Drawing.Size(518, 123);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "热键(读取二维码,复制二维码图片后按此热键读取)";
@@ -514,11 +516,22 @@
             this.label15.TabIndex = 17;
             this.label15.Text = "每行字数:";
             // 
+            // label16
+            // 
+            this.label16.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label16.ForeColor = System.Drawing.Color.Green;
+            this.label16.Location = new System.Drawing.Point(262, 17);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(253, 103);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "用法:在QQ或微信对话框输入要转换的文字，\r\n然后按转换图片热键(默认F6)，\r\n就可以转成文字图片或二维码\r\n对方发过来二维码，\r\n你点击识别屏幕热键，或者复制" +
+    "图片，\r\n然后点击剪贴板的识别热键，\r\n即可以显示识别结果";
+            // 
             // FrmKeys
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 325);
+            this.ClientSize = new System.Drawing.Size(518, 355);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
@@ -587,5 +600,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.NumericUpDown nudLineCount;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
     }
 }

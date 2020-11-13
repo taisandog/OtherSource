@@ -89,7 +89,14 @@ namespace ScanLan
             BindSpeed();
             LostLastScan();
             EnableStart(true);
-            chkAutoRun.Checked = RegConfig.IsAutoRun;
+            try
+            {
+                chkAutoRun.Checked = RegConfig.IsAutoRun;
+            }
+            catch(Exception ex) 
+            {
+                
+            }
             if (Program.AutoRun || _setting.OnListen)
             {
                 OnListen();
@@ -352,7 +359,11 @@ namespace ScanLan
                 SaveLisTo(LastListenFile);
             }
             catch { }
-            RegConfig.IsAutoRun = chkAutoRun.Checked;
+            try
+            {
+                RegConfig.IsAutoRun = chkAutoRun.Checked;
+            }
+            catch { }
             _isStop = true;
             StopThreads();
             Thread.Sleep(300);
@@ -658,7 +669,13 @@ namespace ScanLan
             try
             {
                 OnListen();
-                RegConfig.IsAutoRun = chkAutoRun.Checked;
+                try
+                {
+                    RegConfig.IsAutoRun = chkAutoRun.Checked;
+                }catch(Exception ex) 
+                {
+                    MessageBox.Show(ex.ToString(), "设置开机启动失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 _setting.Port= (int)nupLisPort.Value;
                 _setting.OnListen = true;
                 _setting.SaveConfig();
@@ -672,11 +689,18 @@ namespace ScanLan
 
         private void OnListen()
         {
-            _services = new SCWebServices();
-            _services.Port = (int)nupLisPort.Value;
-            _services.Start();
-            EnableStart(false);
-            RefreashWeb();
+            try
+            {
+                _services = new SCWebServices();
+                _services.Port = (int)nupLisPort.Value;
+                _services.Start();
+                EnableStart(false);
+                RefreashWeb();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.ToString(), "启动失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnLisStop_Click(object sender, EventArgs e)
@@ -812,21 +836,6 @@ namespace ScanLan
         private void GvLis_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }
-
-        private void ChkAutoRun_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void FrmMain_Shown(object sender, EventArgs e)
-        {
-            if (Program.AutoRun || _setting.OnListen)
-            {
-                this.WindowState = FormWindowState.Minimized;
-
-            }
-            
         }
     }
 }

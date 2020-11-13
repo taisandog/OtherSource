@@ -35,6 +35,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbIP = new System.Windows.Forms.ComboBox();
             this.btnStop = new System.Windows.Forms.Button();
+            this.txtEnd = new LC.Library.Controls.IPBox();
+            this.txtStar = new LC.Library.Controls.IPBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -84,8 +86,6 @@
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
             this.appIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.txtEnd = new LC.Library.Controls.IPBox();
-            this.txtStar = new LC.Library.Controls.IPBox();
             this.gpScan.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMembers)).BeginInit();
@@ -155,6 +155,22 @@
             this.btnStop.Text = "停止";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // txtEnd
+            // 
+            this.txtEnd.Location = new System.Drawing.Point(475, 18);
+            this.txtEnd.Name = "txtEnd";
+            this.txtEnd.Padding = new System.Windows.Forms.Padding(1);
+            this.txtEnd.Size = new System.Drawing.Size(140, 21);
+            this.txtEnd.TabIndex = 6;
+            // 
+            // txtStar
+            // 
+            this.txtStar.Location = new System.Drawing.Point(271, 18);
+            this.txtStar.Name = "txtStar";
+            this.txtStar.Padding = new System.Windows.Forms.Padding(1);
+            this.txtStar.Size = new System.Drawing.Size(140, 21);
+            this.txtStar.TabIndex = 5;
             // 
             // label2
             // 
@@ -595,22 +611,6 @@
             this.appIcon.Text = "notifyIcon1";
             this.appIcon.Visible = true;
             // 
-            // txtEnd
-            // 
-            this.txtEnd.Location = new System.Drawing.Point(475, 18);
-            this.txtEnd.Name = "txtEnd";
-            this.txtEnd.Padding = new System.Windows.Forms.Padding(1);
-            this.txtEnd.Size = new System.Drawing.Size(140, 21);
-            this.txtEnd.TabIndex = 6;
-            // 
-            // txtStar
-            // 
-            this.txtStar.Location = new System.Drawing.Point(271, 18);
-            this.txtStar.Name = "txtStar";
-            this.txtStar.Padding = new System.Windows.Forms.Padding(1);
-            this.txtStar.Size = new System.Drawing.Size(140, 21);
-            this.txtStar.TabIndex = 5;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -624,7 +624,6 @@
             this.Text = "局域网助手";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.Shown += new System.EventHandler(this.FrmMain_Shown);
             this.gpScan.ResumeLayout(false);
             this.gpScan.PerformLayout();
             this.groupBox1.ResumeLayout(false);

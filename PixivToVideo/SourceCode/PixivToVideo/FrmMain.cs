@@ -1,4 +1,5 @@
-﻿using Buffalo.Kernel;
+﻿using Buffalo.DBTools;
+using Buffalo.Kernel;
 using Buffalo.Kernel.ZipUnit;
 using Newtonsoft.Json;
 using System;
@@ -32,6 +33,15 @@ namespace PixivToVideo
             FillBit();
             FillType();
             FillConfig();
+
+            SetTitle();
+        }
+        /// <summary>
+        /// 设置标题
+        /// </summary>
+        private void SetTitle()
+        {
+            this.Text = ToolVersionInfo.GetToolVerInfo("P站动图Zip转动画", this.GetType().Assembly);
         }
         // <summary>
         /// 填充信息
@@ -39,7 +49,7 @@ namespace PixivToVideo
         private void FillConfig()
         {
 
-            
+
             if (_config.Nuploop > nuploop.Minimum)
             {
                 nuploop.Value = _config.Nuploop;
@@ -74,7 +84,7 @@ namespace PixivToVideo
         }
         private void SaveConfig()
         {
-           
+
             _config.TxtPath = txtZip.Text;
             _config.TxtOutPath = txtOut.Text;
             _config.CmbOutput = cmbOutput.SelectedValue as string;
@@ -155,12 +165,20 @@ namespace PixivToVideo
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            if (ofdZip.ShowDialog() == DialogResult.OK) 
+            if (ofdZip.ShowDialog() == DialogResult.OK)
             {
-                txtZip.Text = ofdZip.FileName;
-                FileInfo finfo = new FileInfo(ofdZip.FileName);
-                txtOut.Text = finfo.DirectoryName;
+                SetZipFile(ofdZip.FileName);
             }
+        }
+        /// <summary>
+        /// 设置要处理的文件
+        /// </summary>
+        /// <param name="fileName"></param>
+        private void SetZipFile(string fileName)
+        {
+            txtZip.Text = fileName;
+            FileInfo finfo = new FileInfo(fileName);
+            txtOut.Text = finfo.DirectoryName;
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -178,8 +196,8 @@ namespace PixivToVideo
                     txtZip.Focus();
                     return;
                 }
-                
-               
+
+
 
                 EncodeZip(zipPath, savePath);
                 Process.Start(savePath);
@@ -190,7 +208,7 @@ namespace PixivToVideo
             }
             finally
             {
-                
+
                 btnSubmit.Text = "保存";
             }
         }
@@ -411,5 +429,40 @@ namespace PixivToVideo
             btnSubmit.Text = message;
             Application.DoEvents();
         }
+
+        private void FrmMain_DragDrop(object sender, DragEventArgs e)
+        {
+            String[] files = e.Data.GetData(DataFormats.FileDrop, false) as String[];
+            if (files.Length <= 0)
+            {
+                return;
+            }
+            SetZipFile(files[0]);
+        }
+
+        private void FrmMain_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+
+                String[] files = e.Data.GetData(DataFormats.FileDrop, false) as String[];
+                if (files.Length <= 0)
+                {
+                    return;
+                }
+                string fileName = files[0];
+                if (fileName.EndsWith(".zip"))
+                {
+                    e.Effect = DragDropEffects.Copy;
+                    return;
+                }
+            }
+
+            e.Effect = DragDropEffects.None;
+
+        }
+
+
+
     }
 }

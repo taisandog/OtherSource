@@ -32,9 +32,9 @@ namespace PixivToVideo
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtZip = new System.Windows.Forms.TextBox();
-            this.btnSubmit = new System.Windows.Forms.Button();
             this.txtOut = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnOpen = new System.Windows.Forms.Button();
@@ -48,6 +48,7 @@ namespace PixivToVideo
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nuploop)).BeginInit();
@@ -56,6 +57,7 @@ namespace PixivToVideo
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(0, 282);
@@ -73,22 +75,6 @@ namespace PixivToVideo
             this.panel1.Size = new System.Drawing.Size(245, 62);
             this.panel1.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "动画zip文件";
-            // 
-            // txtZip
-            // 
-            this.txtZip.Location = new System.Drawing.Point(113, 19);
-            this.txtZip.Name = "txtZip";
-            this.txtZip.Size = new System.Drawing.Size(295, 26);
-            this.txtZip.TabIndex = 2;
-            // 
             // btnSubmit
             // 
             this.btnSubmit.Location = new System.Drawing.Point(111, 15);
@@ -98,6 +84,22 @@ namespace PixivToVideo
             this.btnSubmit.Text = "转换";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "动图文件";
+            // 
+            // txtZip
+            // 
+            this.txtZip.Location = new System.Drawing.Point(113, 19);
+            this.txtZip.Name = "txtZip";
+            this.txtZip.Size = new System.Drawing.Size(295, 26);
+            this.txtZip.TabIndex = 2;
             // 
             // txtOut
             // 
@@ -132,7 +134,7 @@ namespace PixivToVideo
             this.cmbOutFPS.Items.AddRange(new object[] {
             "MP4",
             "GIF"});
-            this.cmbOutFPS.Location = new System.Drawing.Point(132, 188);
+            this.cmbOutFPS.Location = new System.Drawing.Point(132, 183);
             this.cmbOutFPS.Name = "cmbOutFPS";
             this.cmbOutFPS.Size = new System.Drawing.Size(276, 24);
             this.cmbOutFPS.TabIndex = 39;
@@ -144,14 +146,14 @@ namespace PixivToVideo
             this.cmbbit.Items.AddRange(new object[] {
             "MP4",
             "GIF"});
-            this.cmbbit.Location = new System.Drawing.Point(132, 150);
+            this.cmbbit.Location = new System.Drawing.Point(132, 145);
             this.cmbbit.Name = "cmbbit";
             this.cmbbit.Size = new System.Drawing.Size(276, 24);
             this.cmbbit.TabIndex = 37;
             // 
             // nuploop
             // 
-            this.nuploop.Location = new System.Drawing.Point(132, 108);
+            this.nuploop.Location = new System.Drawing.Point(132, 103);
             this.nuploop.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -161,10 +163,14 @@ namespace PixivToVideo
             this.nuploop.Size = new System.Drawing.Size(276, 26);
             this.nuploop.TabIndex = 34;
             // 
+            // ofdZip
+            // 
+            this.ofdZip.Filter = "Zip文件|*.zip";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(79, 230);
+            this.label8.Location = new System.Drawing.Point(79, 225);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 16);
@@ -178,7 +184,7 @@ namespace PixivToVideo
             this.cmbOutput.Items.AddRange(new object[] {
             "MP4",
             "GIF"});
-            this.cmbOutput.Location = new System.Drawing.Point(132, 225);
+            this.cmbOutput.Location = new System.Drawing.Point(132, 220);
             this.cmbOutput.Name = "cmbOutput";
             this.cmbOutput.Size = new System.Drawing.Size(276, 24);
             this.cmbOutput.TabIndex = 40;
@@ -207,7 +213,7 @@ namespace PixivToVideo
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(39, 190);
+            this.label10.Location = new System.Drawing.Point(39, 185);
             this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(88, 16);
@@ -217,7 +223,7 @@ namespace PixivToVideo
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(39, 152);
+            this.label9.Location = new System.Drawing.Point(39, 147);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(88, 16);
@@ -227,15 +233,25 @@ namespace PixivToVideo
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 110);
+            this.label7.Location = new System.Drawing.Point(7, 105);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 16);
             this.label7.TabIndex = 42;
             this.label7.Text = "循环次数(mp4):";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(-3, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(240, 16);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "(提示：可拖放zip文件到本窗口)";
+            // 
             // FrmMain
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(515, 369);
@@ -243,11 +259,15 @@ namespace PixivToVideo
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("宋体", 12F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.Text = "P站动图包转动画";
             this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FrmMain_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FrmMain_DragEnter);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nuploop)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -276,6 +296,7 @@ namespace PixivToVideo
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label3;
     }
 }
 

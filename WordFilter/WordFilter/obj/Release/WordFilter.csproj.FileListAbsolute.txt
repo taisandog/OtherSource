@@ -10,3 +10,15 @@ D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilterRes\WordFi
 D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.csproj.CopyComplete
 D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.exe
 D:\workspace\BuffaloCode\SourceCode\源码示例\WordFilter\WordFilter\obj\Release\WordFilter.pdb
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilter\obj\Release\WordFilter.FrmKeys.resources
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilter\obj\Release\WordFilter.FrmMain.resources
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilter\obj\Release\WordFilter.FrmQRResault.resources
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilter\obj\Release\WordFilter.Properties.Resources.resources
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilter\obj\Release\WordFilter.csproj.GenerateResource.cache
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilter\obj\Release\WordFilter.csproj.CoreCompileInputs.cache
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilter\obj\Release\WordFilter.exe
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilter\obj\Release\WordFilter.pdb
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilterRes\WordFilter.exe.config
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilterRes\WordFilter.exe
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilterRes\WordFilter.pdb
+D:\workspace\GitProjects\OtherSource\WordFilter\WordFilter\obj\Release\WordFilter.csproj.CopyComplete

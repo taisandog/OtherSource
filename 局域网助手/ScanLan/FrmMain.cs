@@ -22,6 +22,7 @@ namespace ScanLan
 
         private static readonly string LastScanFile = AppDomain.CurrentDomain.BaseDirectory + "\\LastScan.xml";
         private static readonly string LastListenFile = AppDomain.CurrentDomain.BaseDirectory + "\\LastListen.xml";
+        
         private ConfigSetting _setting;
         NumericText[] _txtS =null;
         LanMachine _localMachine;
@@ -76,7 +77,7 @@ namespace ScanLan
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            string ver=System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            string ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             this.Text = "æ÷”ÚÕ¯…®√Ë(ver:" + ver + ")";
             _icon = new FormIconUnit(this, appIcon);
             _icon.Bind();
@@ -93,15 +94,23 @@ namespace ScanLan
             {
                 chkAutoRun.Checked = RegConfig.IsAutoRun;
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.ToString(), "¥ÌŒÛ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (Program.AutoRun )
+
+            if (_setting.OnListen)
             {
-                OnListen();
-                
+                try
+                {
+                    OnListen();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "¥ÌŒÛ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
         }
 
         private void BindSpeed() 
@@ -679,6 +688,7 @@ namespace ScanLan
                 _setting.Port= (int)nupLisPort.Value;
                 _setting.OnListen = true;
                 _setting.SaveConfig();
+                
             }
             catch (Exception ex)
             {
@@ -708,6 +718,7 @@ namespace ScanLan
             StopServices();
             _setting.OnListen = false;
             _setting.SaveConfig();
+
         }
 
         private void StopServices()

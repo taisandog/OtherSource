@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Windows.Forms;
 using Microsoft.Win32;
 namespace ScanLan
@@ -52,7 +53,34 @@ namespace ScanLan
                 }
 			}
 		}
-
+		private static readonly string LastListenStateFile = AppDomain.CurrentDomain.BaseDirectory + "\\LastListenState.sav";
+		/// <summary>
+		/// 保存最后状态
+		/// </summary>
+		/// <param name="state"></param>
+		public static void SaveLastListenState(bool state) 
+		{
+			int content = state ? 1 : 0;
+			using (StreamWriter sw = new StreamWriter(LastListenStateFile, false)) 
+			{
+				sw.Write(content);
+			}
+		}
+		/// <summary>
+		/// 加载最后状态
+		/// </summary>
+		/// <param name="state"></param>
+		public static bool LoadLastListenState(bool state)
+		{
+			using (FileStream sr = new FileStream(LastListenStateFile,FileMode.Open,FileAccess.Read))
+			{
+				using (BinaryReader br = new BinaryReader(sr)) 
+				{
+					int content = br.ReadInt32();
+					return content != 0;
+				}
+			}
+		}
 		/// <summary>
 		/// 注册表键中查找指定的项
 		/// </summary>

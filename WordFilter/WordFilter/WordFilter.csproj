@@ -11,7 +11,7 @@
     <RootNamespace>WordFilter</RootNamespace>
     <AssemblyName>WordFilter</AssemblyName>
     <ApplicationIcon>notebook.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base64Unit.cs" />
     <Compile Include="ConfigSave.cs" />
     <Compile Include="FrmKeys.cs">
       <SubType>Form</SubType>

@@ -34,14 +34,14 @@ namespace WordFilter
             }
         }
 
-        private readonly static Encoding DefaultEncode = Encoding.UTF8;
+        public readonly static Encoding DefaultEncode = Encoding.UTF8;
         public QRCodeUnit() 
         {
 
             _qrRead = new BarcodeReader();
             _qrRead.Options.CharacterSet = "UTF-8";
         }
-        private static string EncryHead = "<?ep";
+        public static string EncryHead = "<?ep";
 
 
         /// <summary>

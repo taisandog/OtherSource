@@ -24,6 +24,7 @@ namespace WordFilter
         bool _visable = false;
         WordPicture _wp;
         QRCodeUnit _qrcode;
+        Base64Unit _base64Unit;
         private ToolStripMenuItem[] _toolItems;
         internal bool _isSys = false;//是否系统复制
         ConfigSave _config;
@@ -38,11 +39,12 @@ namespace WordFilter
             _wp.LineAlpha = 200;
             
             _qrcode = new QRCodeUnit();
+            _base64Unit = new Base64Unit();
             _sc = new ScreenCapture();
             InitializeComponent();
             _config = ConfigSave.ReadConfig();
 
-            _toolItems = new ToolStripMenuItem[] { itemFont, itemQRCode, itemQRCodeEncry };
+            _toolItems = new ToolStripMenuItem[] { itemFont, itemQRCode, itemQRCodeEncry,itemBase64,itemBase64Encry };
             //_listener = new ClipboardListener(this.Handle);
             
             //_listener.OnClipboardWrite += new DelOnWndProc(_listener_OnClipboardWrite);
@@ -126,7 +128,7 @@ namespace WordFilter
             {
                 return _qrcode.GetEncryQRCode(str);
             }
-            return _wp.DrawWordPicture(str);
+            return null;
         }
         
 
@@ -228,26 +230,16 @@ namespace WordFilter
                     if (Clipboard.ContainsText())
                     {
                         string str = (String)Clipboard.GetData(DataFormats.Text);
-                        if (str != null)
-                        {
-                            Image img = GetPicture(str);
-                            if (img != null)
-                            {
-                                Clipboard.SetImage(img);
-                                Thread.Sleep(50);
-                                SendKeys.SendWait("^v");
 
-                                if (_config.ShowTime > 0)
-                                {
-                                    //notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
-                                    //notifyIcon1.BalloonTipText = str;
-                                    //notifyIcon1.BalloonTipTitle = "已经转换文字";
-                                    //notifyIcon1.ShowBalloonTip(_config.ShowTime);
-                                    ShowMessage(str, "已经转换文字", ToolTipIcon.Info, _config.ShowTime);
-                                }
-                                Clipboard.Clear();
-                            }
+                        if (ConvertToImage(str)) 
+                        {
+                            return;
                         }
+                        if (ConvertToText(str))
+                        {
+                            return;
+                        }
+                        
                     }
                 }
                 catch (Exception ex)
@@ -262,6 +254,70 @@ namespace WordFilter
                 _isSys = false;
             }
         }
+        /// <summary>
+        /// 转成图片
+        /// </summary>
+        /// <param name="str"></param>
+        private bool ConvertToText(string str)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return false;
+            }
+            string retStr = null;
+            if (itemBase64.Checked)
+            {
+                retStr=_base64Unit.ToBaseString(str, false);
+            }
+            else if (itemBase64Encry.Checked)
+            {
+                retStr = _base64Unit.ToBaseString(str, true);
+            }
+            if (!string.IsNullOrWhiteSpace(retStr)) 
+            {
+                Clipboard.SetText(retStr);
+                Thread.Sleep(50);
+                SendKeys.SendWait("^v");
+
+                if (_config.ShowTime > 0)
+                {
+                    ShowMessage(str, "已经转换文字", ToolTipIcon.Info, _config.ShowTime);
+                }
+                Clipboard.Clear();
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// 转成图片
+        /// </summary>
+        /// <param name="str"></param>
+        private bool ConvertToImage(string str)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return false;
+            }
+            Image img = GetPicture(str);
+            if (img != null)
+            {
+                Clipboard.SetImage(img);
+                Thread.Sleep(50);
+                SendKeys.SendWait("^v");
+
+                if (_config.ShowTime > 0)
+                {
+                    ShowMessage(str, "已经转换文字", ToolTipIcon.Info, _config.ShowTime);
+                }
+                Clipboard.Clear();
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// 显示信息
         /// </summary>
@@ -285,15 +341,17 @@ namespace WordFilter
                 {
                     using (Bitmap bmap = QRCodeUnit.GetClipboardBitmap())
                     {
-                        if (bmap == null)
+                        if (bmap != null)
                         {
+                            ReadQR(bmap);
                             return;
                         }
-                        string str = _qrcode.GetQRCodeString(bmap);
-                        if (!string.IsNullOrEmpty(str))
-                        {
-                            FrmQRResault.ShowBox(str);
-                        }
+                    }
+                    string str = (String)Clipboard.GetData(DataFormats.Text);
+                    if (!string.IsNullOrEmpty(str))
+                    {
+                        ReadBase64(str);
+                        return;
                     }
                 }
                 catch (Exception ex)
@@ -302,6 +360,29 @@ namespace WordFilter
                 }
             }
         }
+        private void ReadBase64(string base64)
+        {
+            string str = _base64Unit.GetBaseString(base64);
+            if (!string.IsNullOrEmpty(str))
+            {
+                FrmQRResault.ShowBox(str);
+            }
+        }
+
+        /// <summary>
+        /// 读取QR
+        /// </summary>
+        /// <param name="bmap"></param>
+        private void ReadQR(Bitmap bmap) 
+        {
+            
+            string str = _qrcode.GetQRCodeString(bmap);
+            if (!string.IsNullOrEmpty(str))
+            {
+                FrmQRResault.ShowBox(str);
+            }
+        }
+
         void _formHotKey_OnHotKeyPress(Message msg)
         {
             if (!_isSys)

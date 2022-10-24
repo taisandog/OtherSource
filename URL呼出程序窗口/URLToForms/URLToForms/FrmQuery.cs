@@ -14,5 +14,10 @@ namespace URLToForms
         {
             InitializeComponent();
         }
+
+        private void FrmQuery_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

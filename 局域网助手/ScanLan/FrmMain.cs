@@ -104,6 +104,7 @@ namespace ScanLan
                 try
                 {
                     OnListen();
+                    this.Hide();
                 }
                 catch (Exception ex)
                 {
@@ -848,5 +849,8 @@ namespace ScanLan
         {
 
         }
+
+
+
     }
 }

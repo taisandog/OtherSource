@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Buffalo.Win32Kernel.Win32;
-using Buffalo.Kernel;
 using System.Diagnostics;
 
 namespace URLToForms

@@ -16,3 +16,15 @@ D:\workspace\BuffaloCode\SourceCode\源码示例\URL呼出程序窗口\URLToForm
 D:\workspace\BuffaloCode\SourceCode\源码示例\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\URLToForms.csproj.CopyComplete
 D:\workspace\BuffaloCode\SourceCode\源码示例\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\URLToForms.exe
 D:\workspace\BuffaloCode\SourceCode\源码示例\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\URLToForms.pdb
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\URLToForms.FrmEdit.resources
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\URLToForms.FrmMain.resources
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\URLToForms.FrmQuery.resources
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\URLToForms.Properties.Resources.resources
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\Buffalo.Win32Kernel.SingleForms.resources
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\URLToForms.csproj.GenerateResource.cache
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\URLToForms.csproj.CoreCompileInputs.cache
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\URLToForms.exe
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\obj\Debug\URLToForms.pdb
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\bin\Debug\URLToForms.exe.config
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\bin\Debug\URLToForms.exe
+D:\workspace\GitProjects\OtherSource\URL呼出程序窗口\URLToForms\URLToForms\bin\Debug\URLToForms.pdb

@@ -21,6 +21,7 @@ namespace WordFilter
         HotKey _hotKey;
         HotKey _readHotKey;
         HotKey _formHotKey;
+        HotKey _waterMarkHotKey;
         bool _visable = false;
         WordPicture _wp;
         QRCodeUnit _qrcode;
@@ -98,6 +99,11 @@ namespace WordFilter
             {
                 _formHotKey.DoWndProc(m);
             }
+            if (_waterMarkHotKey != null)
+            {
+                _waterMarkHotKey.DoWndProc(m);
+            }
+            
             //if (_listener != null)
             //{
             //    _listener.DoWndProc(m);
@@ -167,6 +173,10 @@ namespace WordFilter
             {
                 _formHotKey.UnRegister();
             }
+            if (_waterMarkHotKey != null && _waterMarkHotKey.IsRegistered)
+            {
+                _waterMarkHotKey.UnRegister();
+            }
         }
 
         /// <summary>
@@ -198,21 +208,22 @@ namespace WordFilter
             {
                 MessageBox.Show("读取活动窗体二维码的热键注册失败，请设置另一组热键", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            _waterMarkHotKey = new HotKey(4, _config.WMModifiers, _config.WMHotKey, this);
+            _waterMarkHotKey.OnHotKeyPress += _waterMarkHotKey_OnHotKeyPress;
+            if (!_waterMarkHotKey.Register())
+            {
+                MessageBox.Show("读取盲水印的热键注册失败，请设置另一组热键", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             _qrcode.QRSize=new System.Drawing.Size(_config.Side,_config.Side);
-            //if (_config.ListenClipboard)
-            //{
-            //    if (!_listener.IsListen)
-            //    {
-            //        _listener.Listen();
-            //    }
-            //}
-            //else 
-            //{
-            //    if (_listener.IsListen)
-            //    {
-            //        _listener.StopListen();
-            //    }
-            //}
+
+        }
+
+        private void _waterMarkHotKey_OnHotKeyPress(Message msg)
+        {
+            using(FrmWaterMark frm=new FrmWaterMark()) 
+            {
+                frm.ShowDialog();
+            }
         }
 
         void _hotKey_OnHotKeyPress(Message msg)

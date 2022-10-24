@@ -65,6 +65,25 @@ namespace WordFilter
             set { _modifiers = value; }
         }
 
+        private Keys _WMHotKey;
+        /// <summary>
+        /// 盲水印热键
+        /// </summary>
+        public Keys WMHotKey
+        {
+            get { return _WMHotKey; }
+            set { _WMHotKey = value; }
+        }
+        private KeyModifiers _WMModifiers;
+        /// <summary>
+        /// 盲水印组合键
+        /// </summary>
+        public KeyModifiers WMModifiers
+        {
+            get { return _WMModifiers; }
+            set { _WMModifiers = value; }
+        }
+
         private Keys _readHotKey;
         /// <summary>
         /// 读二维码热键

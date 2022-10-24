@@ -68,9 +68,11 @@ namespace WordFilter
         private void BindKeys() 
         {
             BindModifiers(cmbModifiers);
+            BindModifiers(cmbWMModifiers);
             BindModifiers(cmbReadModifiers);
             BindModifiers(cmbFormModifiers);
             BindKeys(cmbKeys);
+            BindKeys(cmbWMKeys);
             BindKeys(cmbReadKeys);
             BindKeys(cmbFormKeys);
         }
@@ -108,7 +110,7 @@ namespace WordFilter
             foreach (EnumInfo info in lstKeys)
             {
                 int val = (int)info.Value;
-                if (val >= 48 && val <= 120)
+                if (val >= 0x30 && val <= 0x87)
                 {
                     string name = info.FieldName;
                     if (name.Length == 2 && name[0] == 'D')
@@ -141,6 +143,29 @@ namespace WordFilter
                 cmbModifiers.SelectedValue = (int)config.Modifiers;
             }
             cmbKeys.SelectedValue = (int)config.HotKey;
+
+
+            modifiers = (int)config.ReadModifiers;
+            if (modifiers == 0)
+            {
+                cmbReadModifiers.SelectedIndex = 0;
+            }
+            else
+            {
+                cmbReadModifiers.SelectedValue = (int)config.ReadModifiers;
+            }
+            cmbReadKeys.SelectedValue = (int)config.ReadHotKey;
+
+            int wmmodifiers = (int)config.WMModifiers;
+            if (wmmodifiers == 0)
+            {
+                cmbWMModifiers.SelectedIndex = 0;
+            }
+            else
+            {
+                cmbWMModifiers.SelectedValue = (int)config.WMModifiers;
+            }
+            cmbWMKeys.SelectedValue = (int)config.WMHotKey;
 
 
             modifiers = (int)config.ReadModifiers;
@@ -188,6 +213,9 @@ namespace WordFilter
 
             config.Modifiers = (KeyModifiers)cmbModifiers.SelectedValue;
             config.HotKey = (Keys)cmbKeys.SelectedValue;
+            config.WMModifiers = (KeyModifiers)cmbWMModifiers.SelectedValue;
+            config.WMHotKey = (Keys)cmbWMKeys.SelectedValue;
+
             config.Side = (int)txtSide.Value;
             config.ShowTime = (int)txtShow.Value;
             config.ReadModifiers = (KeyModifiers)cmbReadModifiers.SelectedValue;

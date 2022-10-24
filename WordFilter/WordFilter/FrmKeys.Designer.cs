@@ -34,6 +34,8 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.nudLineCount = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
             this.nupTwist = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.btnFont = new System.Windows.Forms.Button();
@@ -56,6 +58,7 @@
             this.cmbKeys = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.cmbFormModifiers = new System.Windows.Forms.ComboBox();
             this.cmbFormKeys = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -69,18 +72,20 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.cdPicker = new System.Windows.Forms.ColorDialog();
             this.fdPick = new System.Windows.Forms.FontDialog();
-            this.nudLineCount = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cmbWMModifiers = new System.Windows.Forms.ComboBox();
+            this.cmbWMKeys = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLineCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupTwist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSide)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLineCount)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -152,6 +157,28 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "参数";
+            // 
+            // nudLineCount
+            // 
+            this.nudLineCount.Location = new System.Drawing.Point(428, 21);
+            this.nudLineCount.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.nudLineCount.Name = "nudLineCount";
+            this.nudLineCount.Size = new System.Drawing.Size(59, 21);
+            this.nudLineCount.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.nudLineCount, "转换后每行最多几个字（0则为不改动）");
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(371, 24);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(59, 12);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "每行字数:";
             // 
             // nupTwist
             // 
@@ -346,6 +373,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.cmbWMModifiers);
+            this.groupBox1.Controls.Add(this.cmbWMKeys);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.cmbModifiers);
             this.groupBox1.Controls.Add(this.cmbKeys);
             this.groupBox1.Controls.Add(this.label1);
@@ -355,13 +387,13 @@
             this.groupBox1.Size = new System.Drawing.Size(518, 52);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "热键(转换图片)";
+            this.groupBox1.Text = "热键(转换)";
             // 
             // cmbModifiers
             // 
             this.cmbModifiers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbModifiers.FormattingEnabled = true;
-            this.cmbModifiers.Location = new System.Drawing.Point(13, 20);
+            this.cmbModifiers.Location = new System.Drawing.Point(44, 20);
             this.cmbModifiers.Name = "cmbModifiers";
             this.cmbModifiers.Size = new System.Drawing.Size(62, 20);
             this.cmbModifiers.TabIndex = 0;
@@ -370,7 +402,7 @@
             // 
             this.cmbKeys.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKeys.FormattingEnabled = true;
-            this.cmbKeys.Location = new System.Drawing.Point(96, 20);
+            this.cmbKeys.Location = new System.Drawing.Point(127, 20);
             this.cmbKeys.Name = "cmbKeys";
             this.cmbKeys.Size = new System.Drawing.Size(91, 20);
             this.cmbKeys.TabIndex = 2;
@@ -379,7 +411,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(79, 24);
+            this.label1.Location = new System.Drawing.Point(110, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(11, 12);
             this.label1.TabIndex = 1;
@@ -405,6 +437,17 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "热键(读取二维码,复制二维码图片后按此热键读取)";
+            // 
+            // label16
+            // 
+            this.label16.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label16.ForeColor = System.Drawing.Color.Green;
+            this.label16.Location = new System.Drawing.Point(262, 17);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(253, 103);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "用法:在QQ或微信对话框输入要转换的文字，\r\n然后按转换图片热键(默认F6)，\r\n就可以转成文字图片或二维码\r\n对方发过来二维码，\r\n你点击识别屏幕热键，或者复制" +
+    "图片，\r\n然后点击剪贴板的识别热键，\r\n即可以显示识别结果";
             // 
             // cmbFormModifiers
             // 
@@ -494,38 +537,50 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "密码:";
             // 
-            // nudLineCount
+            // label17
             // 
-            this.nudLineCount.Location = new System.Drawing.Point(428, 21);
-            this.nudLineCount.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.nudLineCount.Name = "nudLineCount";
-            this.nudLineCount.Size = new System.Drawing.Size(59, 21);
-            this.nudLineCount.TabIndex = 18;
-            this.toolTip1.SetToolTip(this.nudLineCount, "转换后每行最多几个字（0则为不改动）");
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 24);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(35, 12);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "图片:";
             // 
-            // label15
+            // label18
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(371, 24);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(59, 12);
-            this.label15.TabIndex = 17;
-            this.label15.Text = "每行字数:";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(238, 24);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(47, 12);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "盲水印:";
             // 
-            // label16
+            // cmbWMModifiers
             // 
-            this.label16.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label16.ForeColor = System.Drawing.Color.Green;
-            this.label16.Location = new System.Drawing.Point(262, 17);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(253, 103);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "用法:在QQ或微信对话框输入要转换的文字，\r\n然后按转换图片热键(默认F6)，\r\n就可以转成文字图片或二维码\r\n对方发过来二维码，\r\n你点击识别屏幕热键，或者复制" +
-    "图片，\r\n然后点击剪贴板的识别热键，\r\n即可以显示识别结果";
+            this.cmbWMModifiers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbWMModifiers.FormattingEnabled = true;
+            this.cmbWMModifiers.Location = new System.Drawing.Point(291, 20);
+            this.cmbWMModifiers.Name = "cmbWMModifiers";
+            this.cmbWMModifiers.Size = new System.Drawing.Size(62, 20);
+            this.cmbWMModifiers.TabIndex = 12;
+            // 
+            // cmbWMKeys
+            // 
+            this.cmbWMKeys.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbWMKeys.FormattingEnabled = true;
+            this.cmbWMKeys.Location = new System.Drawing.Point(374, 20);
+            this.cmbWMKeys.Name = "cmbWMKeys";
+            this.cmbWMKeys.Size = new System.Drawing.Size(91, 20);
+            this.cmbWMKeys.TabIndex = 14;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(357, 24);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(11, 12);
+            this.label19.TabIndex = 13;
+            this.label19.Text = "+";
             // 
             // FrmKeys
             // 
@@ -544,6 +599,7 @@
             this.panel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLineCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupTwist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSide)).EndInit();
@@ -551,7 +607,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLineCount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -601,5 +656,10 @@
         private System.Windows.Forms.NumericUpDown nudLineCount;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cmbWMModifiers;
+        private System.Windows.Forms.ComboBox cmbWMKeys;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label17;
     }
 }

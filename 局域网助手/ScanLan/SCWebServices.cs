@@ -30,6 +30,15 @@ namespace ScanLan
         private int _port;
         private Thread _thd;
         public event ErrorHandle OnException;
+        private IPAddress _useIP;
+        /// <summary>
+        /// 使用此IP唤醒
+        /// </summary>
+        public IPAddress UseIP
+        {
+            get { return _useIP; }
+            set { _useIP = value; }
+        }
         public int Port
         {
             get { return _port; }
@@ -205,6 +214,7 @@ namespace ScanLan
                 return;
             }
             LanMachine machine = new LanMachine();
+            machine.IP = _useIP;
             machine.Mac = new MacInfo(mac);
             machine.WakeOnLan();
         }

@@ -1,0 +1,16 @@
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Debug\ConfigPictures.csprojAssemblyReference.cache
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Debug\Interop.TaskScheduler.dll
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Debug\ConfigPictures.csproj.ResolveComReference.cache
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Debug\ConfigPictures.FrmMain.resources
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Debug\ConfigPictures.Properties.Resources.resources
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Debug\ConfigPictures.csproj.GenerateResource.cache
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Debug\ConfigPictures.csproj.CoreCompileInputs.cache
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\bin\Debug\ConfigPictures.exe.config
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\bin\Debug\ConfigPictures.exe
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\bin\Debug\ConfigPictures.pdb
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\bin\Debug\Buffalo.Kernel.dll
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\bin\Debug\Buffalo.Kernel.xml
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\bin\Debug\Interop.TaskScheduler.dll
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Debug\ConfigPictures.csproj.CopyComplete
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Debug\ConfigPictures.exe
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Debug\ConfigPictures.pdb

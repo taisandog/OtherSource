@@ -73,23 +73,6 @@ namespace ScanLan
             {
                 cmbIP.SelectedIndex = 0;
             }
-
-            List<LanMachine> lst2 = new List<LanMachine>(lst);
-            cmbBindIP.DisplayMember = "IP";
-            cmbBindIP.ValueMember = "IP";
-            cmbBindIP.DataSource = lst;
-
-            if (!string.IsNullOrWhiteSpace(_setting.WakeOnBindIP))
-            {
-                cmbBindIP.Text= _setting.WakeOnBindIP;
-            }
-            else
-            {
-                if (cmbBindIP.Items.Count > 0)
-                {
-                    cmbBindIP.SelectedIndex = 0;
-                }
-            }
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -705,7 +688,6 @@ namespace ScanLan
                 }
                 _setting.Port= (int)nupLisPort.Value;
                 _setting.OnListen = true;
-                _setting.WakeOnBindIP = cmbBindIP.Text;
                 _setting.SaveConfig();
                 
             }
@@ -721,14 +703,6 @@ namespace ScanLan
             try
             {
                 _services = new SCWebServices();
-                IPAddress ip = null;
-                if(!IPAddress.TryParse(cmbBindIP.Text,out ip)) 
-                {
-                    MessageBox.Show("起动失败，请选择绑定唤醒的IP", "起动失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                _services.UseIP = ip;
                 _services.Port = (int)nupLisPort.Value;
                 _services.Start();
                 EnableStart(false);
@@ -767,7 +741,6 @@ namespace ScanLan
             btnLisStop.Enabled = !enable;
             nupLisPort.Enabled = enable;
             chkAutoRun.Enabled = enable;
-            cmbBindIP.Enabled = enable;
         }
 
         private void TsAddToLis_Click(object sender, EventArgs e)

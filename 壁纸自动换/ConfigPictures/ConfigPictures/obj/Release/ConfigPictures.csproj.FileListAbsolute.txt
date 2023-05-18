@@ -1,0 +1,10 @@
+D:\workspace\GitProjects\OtherSource\壁纸自动换\DeskTop\ConfigPictures.exe.config
+D:\workspace\GitProjects\OtherSource\壁纸自动换\DeskTop\ConfigPictures.exe
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Release\Interop.TaskScheduler.dll
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Release\ConfigPictures.csproj.ResolveComReference.cache
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Release\ConfigPictures.FrmMain.resources
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Release\ConfigPictures.Properties.Resources.resources
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Release\ConfigPictures.csproj.GenerateResource.cache
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Release\ConfigPictures.csproj.CoreCompileInputs.cache
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Release\ConfigPictures.csproj.CopyComplete
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\ConfigPictures\obj\Release\ConfigPictures.exe

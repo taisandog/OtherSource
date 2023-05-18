@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>唤醒</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" />
+    <meta name="author" />
+        <style type="text/css">
+            .btnSty {
+                margin-left: 2px;
+                width: 150px;
+                height: 80px
+            }
+        </style>
+    <script type="text/javascript">
+        function onSubmit(mac)
+        {
+            document.getElementById("txtMac").value = mac;
+            
+            return true;
+        }
+    </script>
+    </head>
+    <body>
+        <form action="wakeup.htm" method="get">
+            <input name="btnSub" value="唤醒1" class="btnSty" type="submit" onclick="onSubmit('4563456789')" />
+            <input name="btnSub" value="唤醒2" class="btnSty" type="submit" onclick="onSubmit('65gh67568')" />
+            <input id="txtMac" name="txtMac" type="hidden" value="" />
+        </form>
+    </body>
+</html>

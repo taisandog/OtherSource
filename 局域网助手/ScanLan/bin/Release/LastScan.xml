@@ -1,0 +1,16 @@
+<root>
+  <LanMachine IP="192.168.31.1" Mac="257101876219444" HostName="YUNJIAN" />
+  <LanMachine IP="192.168.31.24" Mac="220691636067596" HostName="mikot" />
+  <LanMachine IP="192.168.31.25" Mac="162421264254320" HostName="DESKTOP-3T694VT" />
+  <LanMachine IP="192.168.31.27" Mac="29499234717440" HostName="192.168.31.27" />
+  <LanMachine IP="192.168.31.73" Mac="70498800892924" HostName="192.168.31.73" />
+  <LanMachine IP="192.168.31.160" Mac="126801426175880" HostName="DESKTOP-Q0C9JHB" />
+  <LanMachine IP="192.168.31.180" Mac="227626739750792" HostName="DESKTOP-M42L7GJ.local" />
+  <LanMachine IP="192.168.31.103" Mac="0" HostName="192.168.31.103" />
+  <LanMachine IP="192.168.31.186" Mac="263999917628324" HostName="192.168.31.186" />
+  <LanMachine IP="192.168.31.236" Mac="88669266405216" HostName="DESKTOP-GVTK37C.local" />
+  <LanMachine IP="192.168.31.200" Mac="240282476277096" HostName="192.168.31.200" />
+  <LanMachine IP="192.168.31.213" Mac="47905412857248" HostName="192.168.31.213" />
+  <LanMachine IP="192.168.31.253" Mac="66618916460848" HostName="MCdeMac-mini.local" />
+  <LanMachine IP="192.168.31.222" Mac="238864497856736" HostName="192.168.31.222" />
+</root>

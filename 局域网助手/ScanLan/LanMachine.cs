@@ -221,17 +221,17 @@ namespace ScanLan
         public void WakeOnLan()
         {
             byte[] mac = _mac.ToBytes();
-            WakeOnLan(mac, _ip);
-            WakeOnLan2(mac, _ip);
+            WakeOnLan(mac);
+            WakeOnLan2(mac);
         }
         /// <summary>
         /// 实现网络唤醒
         /// </summary>
         /// <param name="mac"></param>
-        public static void WakeOnLan(byte[] mac, IPAddress ip)
+        public static void WakeOnLan(byte[] mac)
         {
-            IPEndPoint ipe=new IPEndPoint(ip,0);
-            using (UdpClient client = new UdpClient(ipe))
+            
+            using (UdpClient client = new UdpClient())
             {
                 client.Connect(IPAddress.Broadcast, 9090);
                 byte[] packet = CreateMagicPackage(mac);
@@ -266,10 +266,10 @@ namespace ScanLan
         /// <summary>
         /// 唤醒2
         /// </summary>
-        public void WakeOnLan2(byte[] mac,IPAddress ip)
+        public void WakeOnLan2(byte[] mac)
         {
-            IPEndPoint ipe = new IPEndPoint(ip, 0);
-            using (UdpClient client = new UdpClient(ipe))
+
+            using (UdpClient client = new UdpClient())
             {
                 client.Connect(IPAddress.Broadcast, 0x2fff);
 

@@ -1,0 +1,9 @@
+D:\workspace\GitProjects\OtherSource\壁纸自动换\DeskTop\AutoChangeDeskTop.exe.config
+D:\workspace\GitProjects\OtherSource\壁纸自动换\DeskTop\AutoChangeDeskTop.exe
+D:\workspace\GitProjects\OtherSource\壁纸自动换\DeskTop\AutoChangeDeskTop.pdb
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\AutoChangeDeskTop\obj\x86\Release\AutoChangeDeskTop.Properties.Resources.resources
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\AutoChangeDeskTop\obj\x86\Release\AutoChangeDeskTop.csproj.GenerateResource.cache
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\AutoChangeDeskTop\obj\x86\Release\AutoChangeDeskTop.csproj.CoreCompileInputs.cache
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\AutoChangeDeskTop\obj\x86\Release\AutoChangeDeskTop.csproj.CopyComplete
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\AutoChangeDeskTop\obj\x86\Release\AutoChangeDeskTop.exe
+D:\workspace\GitProjects\OtherSource\壁纸自动换\ConfigPictures\AutoChangeDeskTop\obj\x86\Release\AutoChangeDeskTop.pdb

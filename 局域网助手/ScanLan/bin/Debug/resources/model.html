@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>唤醒</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" />
+    <meta name="author" />
+        <style type="text/css">
+            .btnSty {
+                margin-left: 2px;
+                margin-top:5px;
+                width: 150px;
+                height: 80px;
+                color: #fff;
+                background-color: #4ac8fd;
+                border-color: #0598ff;
+               font-size: 18px;
+               line-height: 1.3333333;
+            }
+        </style>
+    <script type="text/javascript">
+        function onSubmit(name,mac)
+        {
+            var isCon = confirm("是否唤醒:"+name);
+            if (!isCon) {
+                return false;
+            }
+            document.getElementById("txtMac").value = mac;
+            
+            return true;
+        }
+    </script>
+    </head>
+    <body>
+        <div style="text-align:center"> <h1>唤醒我的计算机</h1></div>
+        <form action="./wakeup.htm" method="get">
+            <%#Buttons#%>
+            <input id="txtMac" name="mac" type="hidden" value="" />
+        </form>
+    </body>
+</html>

@@ -67,18 +67,7 @@ namespace ScanLan
             get { return _onListen; }
             set { _onListen = value; }
         }
-
-        private string _wakeOnBindIP;
-        /// <summary>
-        /// 绑定的唤醒IP
-        /// </summary>
-        public string WakeOnBindIP
-        {
-            get { return _wakeOnBindIP; }
-            set { _wakeOnBindIP = value; }
-        }
-
-
+        
 
     }
 }

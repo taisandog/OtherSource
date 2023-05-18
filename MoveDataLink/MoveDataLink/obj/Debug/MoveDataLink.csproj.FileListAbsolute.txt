@@ -1,0 +1,10 @@
+D:\workspace\GitProjects\OtherSource\MoveDataLink\MoveDataLink\bin\Debug\MoveDataLink.exe
+D:\workspace\GitProjects\OtherSource\MoveDataLink\MoveDataLink\bin\Debug\MoveDataLink.pdb
+D:\workspace\GitProjects\OtherSource\MoveDataLink\MoveDataLink\obj\Debug\MoveDataLink.csprojAssemblyReference.cache
+D:\workspace\GitProjects\OtherSource\MoveDataLink\MoveDataLink\obj\Debug\MoveDataLink.FrmDefault.resources
+D:\workspace\GitProjects\OtherSource\MoveDataLink\MoveDataLink\obj\Debug\MoveDataLink.FrmMain.resources
+D:\workspace\GitProjects\OtherSource\MoveDataLink\MoveDataLink\obj\Debug\MoveDataLink.Properties.Resources.resources
+D:\workspace\GitProjects\OtherSource\MoveDataLink\MoveDataLink\obj\Debug\MoveDataLink.csproj.GenerateResource.cache
+D:\workspace\GitProjects\OtherSource\MoveDataLink\MoveDataLink\obj\Debug\MoveDataLink.csproj.CoreCompileInputs.cache
+D:\workspace\GitProjects\OtherSource\MoveDataLink\MoveDataLink\obj\Debug\MoveDataLink.exe
+D:\workspace\GitProjects\OtherSource\MoveDataLink\MoveDataLink\obj\Debug\MoveDataLink.pdb

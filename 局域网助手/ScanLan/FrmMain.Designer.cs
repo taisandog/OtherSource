@@ -35,6 +35,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbIP = new System.Windows.Forms.ComboBox();
             this.btnStop = new System.Windows.Forms.Button();
+            this.txtEnd = new LC.Library.Controls.IPBox();
+            this.txtStar = new LC.Library.Controls.IPBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -84,10 +86,6 @@
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
             this.appIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.txtEnd = new LC.Library.Controls.IPBox();
-            this.txtStar = new LC.Library.Controls.IPBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmbBindIP = new System.Windows.Forms.ComboBox();
             this.gpScan.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMembers)).BeginInit();
@@ -157,6 +155,22 @@
             this.btnStop.Text = "停止";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // txtEnd
+            // 
+            this.txtEnd.Location = new System.Drawing.Point(475, 18);
+            this.txtEnd.Name = "txtEnd";
+            this.txtEnd.Padding = new System.Windows.Forms.Padding(1);
+            this.txtEnd.Size = new System.Drawing.Size(140, 21);
+            this.txtEnd.TabIndex = 6;
+            // 
+            // txtStar
+            // 
+            this.txtStar.Location = new System.Drawing.Point(271, 18);
+            this.txtStar.Name = "txtStar";
+            this.txtStar.Padding = new System.Windows.Forms.Padding(1);
+            this.txtStar.Size = new System.Drawing.Size(140, 21);
+            this.txtStar.TabIndex = 5;
             // 
             // label2
             // 
@@ -345,8 +359,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cmbBindIP);
-            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.chkAutoRun);
             this.groupBox2.Controls.Add(this.gvLis);
             this.groupBox2.Controls.Add(this.btnLisStop);
@@ -364,7 +376,7 @@
             // chkAutoRun
             // 
             this.chkAutoRun.AutoSize = true;
-            this.chkAutoRun.Location = new System.Drawing.Point(9, 69);
+            this.chkAutoRun.Location = new System.Drawing.Point(9, 59);
             this.chkAutoRun.Name = "chkAutoRun";
             this.chkAutoRun.Size = new System.Drawing.Size(48, 16);
             this.chkAutoRun.TabIndex = 5;
@@ -599,39 +611,6 @@
             this.appIcon.Text = "notifyIcon1";
             this.appIcon.Visible = true;
             // 
-            // txtEnd
-            // 
-            this.txtEnd.Location = new System.Drawing.Point(475, 18);
-            this.txtEnd.Name = "txtEnd";
-            this.txtEnd.Padding = new System.Windows.Forms.Padding(1);
-            this.txtEnd.Size = new System.Drawing.Size(140, 21);
-            this.txtEnd.TabIndex = 6;
-            // 
-            // txtStar
-            // 
-            this.txtStar.Location = new System.Drawing.Point(271, 18);
-            this.txtStar.Name = "txtStar";
-            this.txtStar.Padding = new System.Windows.Forms.Padding(1);
-            this.txtStar.Size = new System.Drawing.Size(140, 21);
-            this.txtStar.TabIndex = 5;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 49);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 12);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "发起:";
-            // 
-            // cmbBindIP
-            // 
-            this.cmbBindIP.FormattingEnabled = true;
-            this.cmbBindIP.Location = new System.Drawing.Point(42, 46);
-            this.cmbBindIP.Name = "cmbBindIP";
-            this.cmbBindIP.Size = new System.Drawing.Size(123, 20);
-            this.cmbBindIP.TabIndex = 9;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -725,8 +704,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsLisDelete;
         private System.Windows.Forms.CheckBox chkAutoRun;
         private System.Windows.Forms.NotifyIcon appIcon;
-        private System.Windows.Forms.ComboBox cmbBindIP;
-        private System.Windows.Forms.Label label6;
     }
 }
 

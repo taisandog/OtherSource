@@ -1,0 +1,16 @@
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\obj\Debug\PixivToVideo.FrmMain.resources
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\obj\Debug\PixivToVideo.Properties.Resources.resources
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\obj\Debug\PixivToVideo.csproj.GenerateResource.cache
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\obj\Debug\PixivToVideo.csproj.CoreCompileInputs.cache
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\bin\Debug\PixivToVideo.exe.config
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\bin\Debug\PixivToVideo.exe
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\bin\Debug\PixivToVideo.pdb
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\bin\Debug\Buffalo.Kernel.dll
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\bin\Debug\Newtonsoft.Json.dll
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\bin\Debug\Buffalo.Kernel.xml
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\bin\Debug\ICSharpCode.SharpZipLib.xml
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\bin\Debug\Newtonsoft.Json.xml
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\obj\Debug\PixivToVideo.csproj.CopyComplete
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\obj\Debug\PixivToVideo.exe
+D:\workspace\GitProjects\OtherSource\PixivToVideo\SourceCode\PixivToVideo\obj\Debug\PixivToVideo.pdb

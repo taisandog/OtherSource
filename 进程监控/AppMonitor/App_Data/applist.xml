@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root basepath1="D:\App\Services">
+  <app name="自启进程1" path="{basepath1}\App1\app1.exe" args="-auto"
+        serverName="App1" running="1" ></app>
+  
+</root>
+
+
+

@@ -68,7 +68,6 @@
             this.txtPath.BackColor = System.Drawing.Color.White;
             this.txtPath.Location = new System.Drawing.Point(65, 44);
             this.txtPath.Name = "txtPath";
-            this.txtPath.ReadOnly = true;
             this.txtPath.Size = new System.Drawing.Size(148, 21);
             this.txtPath.TabIndex = 3;
             // 
@@ -114,6 +113,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
+            
             this.Text = "添加共享";
             this.Load += new System.EventHandler(this.FrmAddShare_Load);
             this.ResumeLayout(false);

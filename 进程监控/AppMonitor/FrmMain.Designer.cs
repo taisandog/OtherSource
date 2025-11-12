@@ -355,9 +355,9 @@
             Margin = new Padding(5);
             Name = "FrmMain";
             Text = "服务监控";
-            Deactivate += FrmMain_Deactivate;
             FormClosing += FrmMain_FormClosing;
             Load += FrmMain_Load;
+            SizeChanged += FrmMain_SizeChanged;
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();

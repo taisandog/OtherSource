@@ -13,7 +13,7 @@ namespace AppMonitor
             InitializeComponent();
         }
 
-
+        private bool _isOpen = true;
         /// <summary>
         /// 连接服务器线程
         /// </summary>
@@ -305,9 +305,10 @@ namespace AppMonitor
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Btn_Disconnect.Enabled)
+            if (_isOpen)
             {
                 e.Cancel = true;
+                this.Hide();
             }
 
         }
@@ -319,24 +320,31 @@ namespace AppMonitor
             this.TopMost = false;
         }
 
-        private void FrmMain_Deactivate(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.Hide();//隐藏窗体
-            }
-        }
+        
 
         private void tsExit_Click(object sender, EventArgs e)
         {
+            _isOpen = false;
             this.Close();
         }
-
+        FormWindowState _lastWindowState = FormWindowState.Normal;
         private void tsShow_Click(object sender, EventArgs e)
         {
             this.Show();
+            this.WindowState = _lastWindowState;
             this.TopMost = true;
             this.TopMost = false;
+        }
+
+        private void FrmMain_SizeChanged(object sender, EventArgs e)
+        {
+           
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                return;
+            }
+            _lastWindowState = this.WindowState;
         }
     }
 }

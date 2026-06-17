@@ -1,4 +1,5 @@
 using Buffalo.ArgCommon;
+using Buffalo.Kernel;
 using Buffalo.Kernel.TreadPoolManager;
 using GameDaemon;
 using System.Diagnostics;
@@ -13,7 +14,7 @@ namespace AppMonitor
             InitializeComponent();
         }
 
-        private bool _isOpen = true;
+
         /// <summary>
         /// 连接服务器线程
         /// </summary>
@@ -187,9 +188,11 @@ namespace AppMonitor
             mbDisplay.ShowLog = false;
             SetConnEnable(true);
 
-            nupMemory.Maximum = int.MaxValue;
-            nupMemory.Value = AppHandle.RestartMemory / AppHandle.MBValue;
+            //nupMemory.Maximum = int.MaxValue;
+            //nupMemory.Value = AppHandle.RestartMemory / AppHandle.MBValue;
+            long second = AppHandle.RefreashSecond;
 
+            nupSecond.Value = second;
             if (Program.AutoRun)
             {
                 Btn_Connect.PerformClick();
@@ -203,7 +206,7 @@ namespace AppMonitor
         {
             _isRunning = true;
             LogWarning("用户连接监听启动成功");
-            AppHandle.RestartMemory = (long)nupMemory.Value * AppHandle.MBValue;
+            //AppHandle.RestartMemory = (long)nupMemory.Value * AppHandle.MBValue;
             dgView.DataSource = null;
             dgView.DataSource = _proManager;
             SetConnEnable(false);
@@ -227,7 +230,7 @@ namespace AppMonitor
             Btn_Connect.Enabled = enable;
             Btn_Disconnect.Enabled = !enable;
             btnTest.Enabled = !enable;
-            nupMemory.Enabled = enable;
+            //nupMemory.Enabled = enable;
             nupSecond.Enabled = enable;
         }
         public void StopServer()
@@ -297,18 +300,26 @@ namespace AppMonitor
                     LogError("找不到路径");
                 }
                 FileInfo file = new FileInfo(path);
-                Process.Start(file.DirectoryName);
+                Process.Start("explorer.exe", file.DirectoryName);
 
                 return;
             }
         }
 
+        private bool _isCloseing = false;
+
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_isOpen)
+            if (!_isCloseing) 
             {
-                e.Cancel = true;
                 this.Hide();
+                e.Cancel = true;
+                return;
+            }
+            if (Btn_Disconnect.Enabled)
+            {
+                LogWarning("请先关闭监听");
+                e.Cancel = true;
             }
 
         }
@@ -320,31 +331,38 @@ namespace AppMonitor
             this.TopMost = false;
         }
 
-        
+        private void FrmMain_Deactivate(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();//隐藏窗体
+            }
+        }
 
         private void tsExit_Click(object sender, EventArgs e)
         {
-            _isOpen = false;
+            _isCloseing=true;
             this.Close();
         }
-        FormWindowState _lastWindowState = FormWindowState.Normal;
+
         private void tsShow_Click(object sender, EventArgs e)
         {
+            ShowForm();
+        }
+        private void ShowForm() 
+        {
             this.Show();
-            this.WindowState = _lastWindowState;
+            if(this.WindowState == FormWindowState.Minimized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
             this.TopMost = true;
             this.TopMost = false;
         }
 
-        private void FrmMain_SizeChanged(object sender, EventArgs e)
+        private void nfIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-           
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.Hide();
-                return;
-            }
-            _lastWindowState = this.WindowState;
+            ShowForm();
         }
     }
 }

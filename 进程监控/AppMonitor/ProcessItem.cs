@@ -291,26 +291,26 @@ namespace GameDaemon
             CheckProcessActive("["+ Name + "]，自动重启失败，正在启动...");
         }
         
-        /// <summary>
-        /// 检测是否需要重启
-        /// </summary>
-        public void CheckRestart()
-        {
-            if (UseMemory >= AppHandle.RestartMemory)
-            {
-                if ((DateTime.Now.Hour==_parent.RestartHour|| UseMemory>=_immRestart) && IsServerRunning )
-                {
-                    _parent.LogRestart(Name + "的内存到达:" + UseMemory + "，现在进行重启");
-                    AppHandle.SendRestart(_appProcess);
-                    return;
-                }
-            }
+        ///// <summary>
+        ///// 检测是否需要重启
+        ///// </summary>
+        //public void CheckRestart()
+        //{
+        //    if (UseMemory >= AppHandle.RestartMemory)
+        //    {
+        //        if ((DateTime.Now.Hour==_parent.RestartHour|| UseMemory>=_immRestart) && IsServerRunning )
+        //        {
+        //            _parent.LogRestart(Name + "的内存到达:" + UseMemory + "，现在进行重启");
+        //            AppHandle.SendRestart(_appProcess);
+        //            return;
+        //        }
+        //    }
 
-            if (!NeedCheckCPU)
-            {
-                CheckCPU();
-            }
-        }
+        //    if (!NeedCheckCPU)
+        //    {
+        //        CheckCPU();
+        //    }
+        //}
         /// <summary>
         /// 是否需要连续检查CPU
         /// </summary>
@@ -322,26 +322,26 @@ namespace GameDaemon
             }
         }
 
-        /// <summary>
-        /// 检查CPU占用
-        /// </summary>
-        public void CheckCPU()
-        {
-            if (_useCPU > HighCPULoad && _needCheckRestart)
-            {
-                _curhighCPUload++;
-                if (_curhighCPUload >= RestartHighCPUCount && IsServerRunning)
-                {
-                    string message = Name + "的CPU占用在连续" + RestartHighCPUCount + "次到达:" + HighCPULoad + "，现在进行重启";
-                    _parent.LogRestart(message);
-                    AppHandle.SendRestart(_appProcess);
-                }
-            }
-            else
-            {
-                _curhighCPUload = 0;
-            }
-        }
+        ///// <summary>
+        ///// 检查CPU占用
+        ///// </summary>
+        //public void CheckCPU()
+        //{
+        //    if (_useCPU > HighCPULoad && _needCheckRestart)
+        //    {
+        //        _curhighCPUload++;
+        //        if (_curhighCPUload >= RestartHighCPUCount && IsServerRunning)
+        //        {
+        //            string message = Name + "的CPU占用在连续" + RestartHighCPUCount + "次到达:" + HighCPULoad + "，现在进行重启";
+        //            _parent.LogRestart(message);
+        //            AppHandle.SendRestart(_appProcess);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        _curhighCPUload = 0;
+        //    }
+        //}
         /// <summary>
         /// 获取进程名
         /// </summary>

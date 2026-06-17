@@ -12,8 +12,9 @@ namespace AppMonitor
 {
     public class AppHandle
     {
-        public static long RestartMemory = AppSetting.Default["App.RestartMemory"].ConvertTo<long>();
+        //public static long RestartMemory = AppSetting.Default["App.RestartMemory"].ConvertTo<long>();
         public static long MBValue = 1024*1024;
+        public static long RefreashSecond = AppSetting.Default["App.RefreashSecond"].ConvertTo<long>(10);
         /// <summary>
         /// 重启标记
         /// </summary>

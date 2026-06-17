@@ -44,15 +44,12 @@
             ColState = new DataGridViewTextBoxColumn();
             ColDir = new DataGridViewButtonColumn();
             ColStart = new DataGridViewButtonColumn();
-            ColRestart = new DataGridViewButtonColumn();
             groupBox3 = new GroupBox();
             label3 = new Label();
             nupSecond = new NumericUpDown();
             panel1 = new Panel();
             Btn_Connect = new Button();
             Btn_Disconnect = new Button();
-            label1 = new Label();
-            nupMemory = new NumericUpDown();
             nfIcon = new NotifyIcon(components);
             cmsIcon = new ContextMenuStrip(components);
             tsShow = new ToolStripMenuItem();
@@ -64,7 +61,6 @@
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nupSecond).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nupMemory).BeginInit();
             cmsIcon.SuspendLayout();
             SuspendLayout();
             // 
@@ -143,7 +139,7 @@
             dgView.AllowUserToResizeRows = false;
             dgView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgView.Columns.AddRange(new DataGridViewColumn[] { ColServerName, ColPath, ColMemory, ColCPU, ColState, ColDir, ColStart, ColRestart });
+            dgView.Columns.AddRange(new DataGridViewColumn[] { ColServerName, ColPath, ColMemory, ColCPU, ColState, ColDir, ColStart });
             dgView.Dock = DockStyle.Fill;
             dgView.EditMode = DataGridViewEditMode.EditOnEnter;
             dgView.Location = new Point(3, 25);
@@ -217,22 +213,11 @@
             ColStart.Text = "打开";
             ColStart.UseColumnTextForButtonValue = true;
             // 
-            // ColRestart
-            // 
-            ColRestart.FillWeight = 37.60575F;
-            ColRestart.HeaderText = "";
-            ColRestart.Name = "ColRestart";
-            ColRestart.ReadOnly = true;
-            ColRestart.Text = "重启";
-            ColRestart.UseColumnTextForButtonValue = true;
-            // 
             // groupBox3
             // 
             groupBox3.Controls.Add(label3);
             groupBox3.Controls.Add(nupSecond);
             groupBox3.Controls.Add(panel1);
-            groupBox3.Controls.Add(label1);
-            groupBox3.Controls.Add(nupMemory);
             groupBox3.Controls.Add(btnTest);
             groupBox3.Dock = DockStyle.Bottom;
             groupBox3.Location = new Point(0, 309);
@@ -294,28 +279,13 @@
             Btn_Disconnect.UseVisualStyleBackColor = true;
             Btn_Disconnect.Click += Btn_Disconnect_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(136, 35);
-            label1.Name = "label1";
-            label1.Size = new Size(120, 21);
-            label1.TabIndex = 4;
-            label1.Text = "重启内存数:MB";
-            // 
-            // nupMemory
-            // 
-            nupMemory.Location = new Point(262, 33);
-            nupMemory.Name = "nupMemory";
-            nupMemory.Size = new Size(120, 29);
-            nupMemory.TabIndex = 3;
-            // 
             // nfIcon
             // 
             nfIcon.ContextMenuStrip = cmsIcon;
             nfIcon.Icon = (Icon)resources.GetObject("nfIcon.Icon");
             nfIcon.Text = "服务监控";
             nfIcon.Visible = true;
+            nfIcon.MouseDoubleClick += nfIcon_MouseDoubleClick;
             // 
             // cmsIcon
             // 
@@ -355,9 +325,9 @@
             Margin = new Padding(5);
             Name = "FrmMain";
             Text = "服务监控";
+            Deactivate += FrmMain_Deactivate;
             FormClosing += FrmMain_FormClosing;
             Load += FrmMain_Load;
-            SizeChanged += FrmMain_SizeChanged;
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
@@ -366,7 +336,6 @@
             groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nupSecond).EndInit();
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)nupMemory).EndInit();
             cmsIcon.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -382,16 +351,6 @@
         private System.Windows.Forms.NotifyIcon nfIcon;
         private System.Windows.Forms.Button Btn_Disconnect;
         private System.Windows.Forms.Button Btn_Connect;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown nupMemory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColServerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColPath;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColMemory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColCPU;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColState;
-        private System.Windows.Forms.DataGridViewButtonColumn ColDir;
-        private System.Windows.Forms.DataGridViewButtonColumn ColStart;
-        private System.Windows.Forms.DataGridViewButtonColumn ColRestart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labLast;
         private System.Windows.Forms.Label label3;
@@ -401,5 +360,12 @@
         private ToolStripMenuItem tsShow;
         private ToolStripSeparator toolStripMenuItem2;
         private ToolStripMenuItem tsExit;
+        private DataGridViewTextBoxColumn ColServerName;
+        private DataGridViewTextBoxColumn ColPath;
+        private DataGridViewTextBoxColumn ColMemory;
+        private DataGridViewTextBoxColumn ColCPU;
+        private DataGridViewTextBoxColumn ColState;
+        private DataGridViewButtonColumn ColDir;
+        private DataGridViewButtonColumn ColStart;
     }
 }

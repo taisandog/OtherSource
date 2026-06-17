@@ -192,7 +192,7 @@ namespace GameDaemon
                     continue;
                 }
                 item.RefreashCPU();
-                item.CheckCPU();
+                //item.CheckCPU();
             }
         }
 
@@ -217,7 +217,7 @@ namespace GameDaemon
                     {
                         item.RefreashMemory();
                         item.RefreashCPU();
-                        item.CheckRestart();
+                        //item.CheckRestart();
                     }
                     
                 }

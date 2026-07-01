@@ -98,6 +98,36 @@ namespace ScanLan
             return ret;
         }
         /// <summary>
+        /// 将文本解析成MAC地址
+        /// </summary>
+        /// <param name="macText">形如AA-BB-CC-DD-EE-FF的文本</param>
+        /// <param name="mac">解析结果</param>
+        /// <returns>是否解析成功</returns>
+        public static bool TryParse(string macText, out MacInfo mac)
+        {
+            mac = null;
+            if (string.IsNullOrWhiteSpace(macText))
+            {
+                return false;
+            }
+            string[] parts = macText.Trim().Split(new char[] { '-', ':' }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length != 6)
+            {
+                return false;
+            }
+            try
+            {
+                long value = MACStringToLong(string.Join("-", parts));
+                mac = new MacInfo(value);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// 用nbtstat方式获取MAC
         /// </summary>
         /// <param name="ip"></param>

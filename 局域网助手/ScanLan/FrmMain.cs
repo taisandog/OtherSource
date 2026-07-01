@@ -29,6 +29,7 @@ namespace ScanLan
         ScanSpeed _speed = new ScanSpeed("","",100,1000);
 
         FormIconUnit _icon;
+        WakeupSchedulerService _wakeupScheduler = new WakeupSchedulerService();
         /// <summary>
         /// 初始化IP框
         /// </summary>
@@ -112,9 +113,10 @@ namespace ScanLan
                 }
             }
 
+            _wakeupScheduler.Start();
         }
 
-        private void BindSpeed() 
+        private void BindSpeed()
         {
             List<ScanSpeed> lst = new List<ScanSpeed>();
             lst.Add(new ScanSpeed("fast","快",10,100));
@@ -376,6 +378,7 @@ namespace ScanLan
             catch { }
             _isStop = true;
             StopThreads();
+            _wakeupScheduler.Stop();
             Thread.Sleep(300);
             StopServices();
         }
@@ -621,6 +624,36 @@ namespace ScanLan
                     return;
                 }
                 machine.WakeOnLan();
+            }
+        }
+
+        private void TsAddToWakeupSchedule_Click(object sender, EventArgs e)
+        {
+            if (dgMembers.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgMembers.SelectedRows[0];
+                LanMachine machine = row.Tag as LanMachine;
+                if (machine == null || machine.Mac == null)
+                {
+                    return;
+                }
+                WakeupTask task = FrmAddWakeupTask.ShowAdd(machine.Mac.ToString(), machine.HostName);
+                if (task == null)
+                {
+                    return;
+                }
+                List<WakeupTask> tasks = WakeupTaskManager.LoadTasks();
+                tasks.Add(task);
+                WakeupTaskManager.SaveTasks(tasks);
+                MessageBox.Show("已添加定时唤醒任务", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void 定时唤醒管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (FrmWakeupScheduler frm = new FrmWakeupScheduler())
+            {
+                frm.ShowDialog(this);
             }
         }
 

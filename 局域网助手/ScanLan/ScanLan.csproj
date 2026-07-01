@@ -78,6 +78,12 @@
   <ItemGroup>
     <Compile Include="ConfigSetting.cs" />
     <Compile Include="FormIconUnit.cs" />
+    <Compile Include="FrmAddWakeupTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddWakeupTask.Designer.cs">
+      <DependentUpon>FrmAddWakeupTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInputBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     <Compile Include="FrmPing.Designer.cs">
       <DependentUpon>FrmPing.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmWakeupScheduler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWakeupScheduler.Designer.cs">
+      <DependentUpon>FrmWakeupScheduler.cs</DependentUpon>
+    </Compile>
     <Compile Include="IPBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,6 +116,9 @@
     </Compile>
     <Compile Include="LanMachine.cs" />
     <Compile Include="MacInfo.cs" />
+    <Compile Include="WakeupTask.cs" />
+    <Compile Include="WakeupTaskManager.cs" />
+    <Compile Include="WakeupSchedulerService.cs" />
     <Compile Include="NumericText.cs">
       <SubType>Component</SubType>
     </Compile>
